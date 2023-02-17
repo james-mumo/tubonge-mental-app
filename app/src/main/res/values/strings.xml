@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Tubonge</string> <!-- Change App name here -->
+
+    <string name="native_ad_unit_id">ca-app-pub-7109513538039433/9960187903</string>  <!-- Paste Native Ad unit id here for admob -->
+    <string name="banner_ad_unit_id">ca-app-pub-7109513538039433/4899432918</string>  <!-- Paste Banner Ad unit id here for admob -->
+    <string name="contentdescription">contentDescription</string>
+    <string name="search">Search..</string>
+    <string name="finish">Finish</string>
+    <string name="username">Username</string>
+    <string name="hi">Hi</string>
+    <string name="almost_there_one_last_step">Almost there, one last step</string>
+    <string name="to_reset_your_password_enter_the_registered_email_a_link_will_be_sent_on_this_email_to_reset_your_password">To reset your password enter the registered email. A link will be sent on this email to reset your password</string>
+    <string name="send_email">Send Email</string>
+    <string name="sign_in">Sign In</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="enter_your_phone_number_with_country_code_a_otp_will_be_generated_on_this_number">Enter your phone number with country code, a OTP will be generated on this number</string>
+    <string name="eg_1xxxxxxxxxx">eg: +254 xxxxxxxxx</string>
+    <string name="generate_otp">Generate OTP</string>
+    <string name="spacester">© Tubonge</string> <!-- Change Company name here -->
+    <string name="phone_no">Phone no.</string>
+    <string name="email">Email</string>
+    <string name="sign_in_or_sign_up_with">Sign in or sign up with ?</string>
+    <string name="sign_in_to_continue">Sign in to continue</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="proceed">Proceed</string>
+    <string name="name">Name</string>
+    <string name="password">Password</string>
+    <string name="sign_up_to_continue">Sign up to continue</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="enter_the_otp_sent_on_your_number">Enter the OTP sent on your number</string>
+    <string name="enter_your_otp">Enter your OTP</string>
+    <string name="verify_otp">Verify OTP</string>
+    <string name="resend_link_or_change_number">Resend link or change number</string>
+    <string name="todo">TODO</string>
+
+
+    <string name="quote_string">“Despite my ghoulish reputation, I really have the heart of a small boy. I keep it in a jar on my desk.”
+        <b>\n\n– Robert Bloch</b>
+    </string>
+
+    <string name="quote_string2">“I envy people that know love. That have someone who takes them as they are.”
+        <b>\n\n– Jess C Scott, The Devilin Fey</b>
+    </string>
+
+    <string name="quote_string3">“What\'s the whole point of being pretty on the outside when you’re so ugly on the inside?”
+        <b>\n\n– Jess C. Scott</b>
+    </string>
+
+    <string name="quote_string4">“Build a man a fire, and he\'ll be warm for a day. Set a man on fire, and he\'ll be warm for the rest of his life.”
+        <b>\n\n– Terry Pratchett</b>
+    </string>
+
+    <string name="quote_string5">“I know a man who gave up smoking, drinking, sex, and rich food. He was healthy right up to the day he killed himself.”
+        <b>\n\n– Johnny Carson</b>
+    </string>
+
+    <string name="quote_string6">“When I die, I want to die like my grandfather who died peacefully in his sleep. Not screaming like all the passengers in his car.”
+        <b>\n\n– Will Rogers</b>
+    </string>
+
+    <string name="quote_string7">“How much is real and for how long?”
+        <b>\n\n– J. Limbu</b>
+    </string>
+    <string name="sad">Sad</string>
+    <string name="motivated">Motivated</string>
+    <string name="report_post">Report Post</string>
+    <string name="report_post_author">James</string>
+    <string name="report_post_author_tag">Post by :</string>
+    <string name="report_post_time_ago">min ago</string>
+    <string name="submit">Submit</string>
+    <string name="enter_your_report_info">Enter your report</string>
+    <string name="emoji">😁</string>
+    <string name="how_have_you_been_feeling_lately">How have you been feeling lately?</string>
+    <string name="button_continue">Continue</string>
+    <string name="sad_emoji">😟</string>
+    <string name="worried">Worried</string>
+    <string name="happy_emoji">☺</string>
+    <string name="thankful">Thankfull</string>
+    <string name="worried_emoji">😔</string>
+    <string name="terrible">Terrible</string>
+    <string name="terrible_emoji">😖</string>
+    <string name="other">Other</string>
+    <string name="other_emoji">🤔</string>
+    <string name="neutral">Neutral</string>
+    <string name="neutral_emoji">😐</string>
+    <string name="the_post_data">the post data</string>
+</resources>
