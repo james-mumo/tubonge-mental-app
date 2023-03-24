@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorAccent"
+    android:padding="3dp"
+    tools:context=".userEvents.ViewSingleProfessional">
+
+    <RelativeLayout
+        android:id="@+id/topRel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/docImage"
+            android:layout_width="135dp"
+            android:layout_height="135dp"
+            android:src="@drawable/doctor" />
+
+        <TextView
+            android:id="@+id/profName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/docImage"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="@font/bungee"
+            android:paddingHorizontal="10dp"
+            android:text="James James"
+            android:textAlignment="center"
+            android:textColor="?attr/headertextcolor" />
+
+        <TextView
+            android:id="@+id/profSpeciality"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/profName"
+            android:layout_centerHorizontal="true"
+            android:paddingHorizontal="10dp"
+            android:text="Stress Dealing"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="?attr/headertextcolor"
+            android:textSize="10dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/profStars"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/profSpeciality"
+            android:layout_centerHorizontal="true"
+            android:paddingHorizontal="10dp"
+            android:text="5 Stars"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="?attr/headertextcolor"
+            android:textSize="10dp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/middleRel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/topRel"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:background="?attr/headercolor"
+        android:padding="5dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/docSchoolImage"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:src="@drawable/aidkit" />
+
+        <TextView
+            android:id="@+id/profSchoolName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="1dp"
+            android:fontFamily="@font/bungee"
+            android:paddingHorizontal="10dp"
+            android:text="The School Of Mental"
+            android:textAlignment="center"
+            android:textColor="?attr/headertextcolor"
+            android:textSize="9dp" />
+
+        <TextView
+            android:id="@+id/profNumberOfClients"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/profSchoolName"
+            android:layout_centerHorizontal="true"
+            android:paddingHorizontal="10dp"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="?attr/headertextcolor"
+            android:textSize="10dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/profTherapyHours"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/profNumberOfClients"
+            android:layout_centerHorizontal="true"
+            android:paddingHorizontal="10dp"
+            android:text="5 Hours Engaged"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="?attr/headertextcolor"
+            android:textSize="10dp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/bottomRel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/middleRel"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:background="?attr/headercolor"
+        android:padding="5dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/docAbsImage"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:src="@drawable/abstractimage" />
+
+        <TextView
+            android:id="@+id/profPeers"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="1dp"
+            android:paddingHorizontal="10dp"
+            android:text="Communities and Contributions"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="?attr/headertextcolor"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/profPeers"
+            android:layout_centerHorizontal="true"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/profComms"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/profPeers"
+                android:layout_centerHorizontal="true"
+                android:paddingHorizontal="10dp"
+                android:text="3 Commn'ts"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="?attr/headertextcolor"
+                android:textSize="10dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/profIsOccupied"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/profPeers"
+                android:layout_centerHorizontal="true"
+                android:layout_toRightOf="@id/profComms"
+                android:paddingHorizontal="10dp"
+                android:text="Available"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="?attr/headertextcolor"
+                android:textSize="10dp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/contactRel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bottomRel"
+        android:layout_marginTop="2dp"
+        android:background="?attr/headercolor"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:padding="3dp">
+
+        <RelativeLayout
+            android:id="@+id/callBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="9dp"
+            android:background="@color/colorAccent"
+            android:paddingHorizontal="6dp"
+            android:paddingVertical="5dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/callImg"
+                android:layout_width="33dp"
+                android:layout_height="33dp"
+                android:src="@drawable/aidkit" />
+
+            <TextView
+                android:id="@+id/followLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="6dp"
+                android:layout_toRightOf="@+id/callImg"
+                android:paddingHorizontal="8dp"
+                android:text="Follow"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="?attr/headertextcolor"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <!--            <TextView-->
+            <!--                android:id="@+id/callNumber"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_below="@+id/callLabel"-->
+            <!--                android:layout_marginStart="6dp"-->
+            <!--                android:layout_toRightOf="@+id/callImg"-->
+            <!--                android:paddingHorizontal="3dp"-->
+            <!--                android:text="+2547 43 597 468"-->
+            <!--                android:textAllCaps="true"-->
+            <!--                android:textColor="?attr/headertextcolor"-->
+            <!--                android:textSize="12sp"-->
+            <!--                android:textStyle="bold" />-->
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/msgBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:background="@color/colorAccent"
+            android:paddingHorizontal="6dp"
+            android:paddingVertical="5dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/msgImg"
+                android:layout_width="33dp"
+                android:layout_height="33dp"
+                android:src="@drawable/aidkit" />
+
+            <TextView
+                android:id="@+id/msgLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="6dp"
+                android:layout_toRightOf="@+id/msgImg"
+                android:paddingHorizontal="8dp"
+                android:text="Message"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="?attr/headertextcolor"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/postView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/contactRel"
+        android:layout_marginTop="4dp"
+        android:background="?attr/headercolor"
+        android:paddingHorizontal="2dp"
+        android:paddingVertical="4dp"
+        tools:listitem="@layout/post" />
+
+
+</RelativeLayout>

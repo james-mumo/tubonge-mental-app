@@ -591,7 +591,7 @@ public class PostDetails extends AppCompatActivity implements View.OnClickListen
                     }
 
                     //hisTime
-                    type.setText(hisTypes + " - " + lastSeenTime);
+                    type.setText(lastSeenTime);
                     name.setText(hisName);
                     if (comment.equals("0")) {
                         commentNo.setText("Comment");

@@ -1,0 +1,39 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/colorAccent">
+
+    <LinearLayout
+        android:id="@+id/hdrLinL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/headercolor"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="7dp"
+            android:fontFamily="@font/bungee"
+            android:rotation="0"
+            android:text="What Do You Want To Improve"
+            android:textColor="?attr/headertextcolor"
+            android:textSize="19dp"
+            android:translationZ="333dp" />
+
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/list_view"
+        tools:listitem="@layout/self_development_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/hdrLinL"
+        android:layout_marginTop="2dp"
+        android:divider="@null"
+        android:dividerHeight="0dp" />
+
+
+</RelativeLayout>

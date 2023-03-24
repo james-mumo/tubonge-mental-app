@@ -1,12 +1,5 @@
 package com.jamesmumo.tubonge.shareChat;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.ContentResolver;
@@ -30,6 +23,13 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.android.volley.AuthFailureError;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -49,18 +49,18 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.gson.Gson;
-import com.muddzdev.styleabletoastlibrary.StyleableToast;
-import com.jamesmumo.tubonge.adapter.AdapterChat;
 import com.jamesmumo.tubonge.MainActivity;
-import com.jamesmumo.tubonge.model.ModelChat;
-import com.jamesmumo.tubonge.model.ModelUser;
 import com.jamesmumo.tubonge.R;
 import com.jamesmumo.tubonge.SharedPref;
+import com.jamesmumo.tubonge.adapter.AdapterChat;
+import com.jamesmumo.tubonge.model.ModelChat;
+import com.jamesmumo.tubonge.model.ModelUser;
 import com.jamesmumo.tubonge.notifications.Data;
 import com.jamesmumo.tubonge.notifications.Sender;
 import com.jamesmumo.tubonge.notifications.Token;
 import com.jamesmumo.tubonge.user.UserProfile;
 import com.jamesmumo.tubonge.welcome.GetTimeAgo;
+import com.muddzdev.styleabletoastlibrary.StyleableToast;
 import com.squareup.picasso.Picasso;
 import com.tapadoo.alerter.Alerter;
 
@@ -79,23 +79,23 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class Chat extends AppCompatActivity implements View.OnClickListener {
 
     private static final int PICK_VIDEO_REQUEST = 1;
-   RecyclerView recyclerView;
+    RecyclerView recyclerView;
     EditText textBox;
-    ImageView send,back,attach,more;
-    TextView mName,username,blocked;
+    ImageView send, back, attach, more;
+    TextView mName, username, blocked;
     CircleImageView circleImageView;
     RelativeLayout type;
-    ConstraintLayout constraintLayout3,delete;
+    ConstraintLayout constraintLayout3, delete;
     BottomSheetDialog bottomSheetDialog;
 
-    ConstraintLayout block,info;
+    ConstraintLayout block, info;
     BottomSheetDialog bottomDialog;
 
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
     AdapterChat adapterChat;
     List<ModelChat> nChat;
-    ConstraintLayout myblock,hisblock,constraintLayout5;
+    ConstraintLayout myblock, hisblock, constraintLayout5;
     SharedPref sharedPref;
     boolean isBlocked = false;
 
@@ -108,12 +108,13 @@ public class Chat extends AppCompatActivity implements View.OnClickListener {
     String hisUid;
     private RequestQueue requestQueue;
     private boolean notify = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         sharedPref = new SharedPref(this);
-        if (sharedPref.loadNightModeState()){
+        if (sharedPref.loadNightModeState()) {
             setTheme(R.style.DarkTheme);
-        }else setTheme(R.style.AppTheme);
+        } else setTheme(R.style.AppTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
 
@@ -148,9 +149,9 @@ public class Chat extends AppCompatActivity implements View.OnClickListener {
         recyclerView.setLayoutManager(linearLayoutManager);
 
         //Intent
-       hisUid = getIntent().getStringExtra("hisUid");
+        hisUid = getIntent().getStringExtra("hisUid");
 
-       more.setOnClickListener(v -> bottomDialog.show());
+        more.setOnClickListener(v -> bottomDialog.show());
 
         //Firebase
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
@@ -173,21 +174,21 @@ public class Chat extends AppCompatActivity implements View.OnClickListener {
             @SuppressLint("SetTextI18n")
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot ds: dataSnapshot.getChildren()){
-                    String name = ""+ ds.child("name").getValue();
-                    String photo = ""+ ds.child("photo").getValue();
-                    String status = ""+ ds.child("status").getValue();
-                    String typingStatus = ""+ ds.child("typingTo").getValue();
+                for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                    String name = "" + ds.child("name").getValue();
+                    String photo = "" + ds.child("photo").getValue();
+                    String status = "" + ds.child("status").getValue();
+                    String typingStatus = "" + ds.child("typingTo").getValue();
 
-                    if (typingStatus.equals(myUid)){
-                      type.setVisibility(View.VISIBLE);
-                    }else {
+                    if (typingStatus.equals(myUid)) {
+                        type.setVisibility(View.VISIBLE);
+                    } else {
 
                         type.setVisibility(View.GONE);
                     }
                     if (status.equals("online")) {
                         username.setText(status);
-                    }else {
+                    } else {
                         GetTimeAgo getTimeAgo = new GetTimeAgo();
                         long lastTime = Long.parseLong(status);
                         String lastSeenTime = GetTimeAgo.getTimeAgo(lastTime);
@@ -197,7 +198,7 @@ public class Chat extends AppCompatActivity implements View.OnClickListener {
                     mName.setText(name);
                     try {
                         Picasso.get().load(photo).placeholder(R.drawable.avatar).into(circleImageView);
-                    }catch (Exception e){
+                    } catch (Exception e) {
                         Picasso.get().load(R.drawable.avatar).into(circleImageView);
 
                     }
@@ -222,14 +223,14 @@ public class Chat extends AppCompatActivity implements View.OnClickListener {
 
             }
         });
-        
+
         //Send Msg
         send.setOnClickListener(v -> {
             notify = true;
             String message = textBox.getText().toString().trim();
-            if (TextUtils.isEmpty(message)){
+            if (TextUtils.isEmpty(message)) {
 
-            }else {
+            } else {
                 sendMessage(message);
             }
             textBox.setText("");
@@ -243,9 +244,9 @@ public class Chat extends AppCompatActivity implements View.OnClickListener {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (s.toString().trim().length() == 0){
+                if (s.toString().trim().length() == 0) {
                     checkTypingStatus("noOne");
-                }else {
+                } else {
                     checkTypingStatus(hisUid);
                 }
             }
@@ -264,7 +265,7 @@ public class Chat extends AppCompatActivity implements View.OnClickListener {
         chatRef1.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (!snapshot.exists()){
+                if (!snapshot.exists()) {
                     chatRef1.child("id").setValue(hisUid);
                 }
             }
@@ -282,7 +283,7 @@ public class Chat extends AppCompatActivity implements View.OnClickListener {
         chatRef2.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (!snapshot.exists()){
+                if (!snapshot.exists()) {
                     chatRef2.child("id").setValue(myUid);
                 }
             }
@@ -296,13 +297,12 @@ public class Chat extends AppCompatActivity implements View.OnClickListener {
         Intent intent = getIntent();
         String action = intent.getAction();
         String type = intent.getType();
-        if (Intent.ACTION_SEND.equals(action) && type!=null){
-            if ("text/plain".equals(type)){
+        if (Intent.ACTION_SEND.equals(action) && type != null) {
+            if ("text/plain".equals(type)) {
                 sendText(intent);
-            }
-            else if (type.startsWith("image")){
+            } else if (type.startsWith("image")) {
                 sendChatImage(intent);
-            }else if (type.startsWith("video")){
+            } else if (type.startsWith("video")) {
                 sendChatVideo(intent);
             }
         }
@@ -311,14 +311,14 @@ public class Chat extends AppCompatActivity implements View.OnClickListener {
 
     }
 
-    private void imBLockedOrNot (){
+    private void imBLockedOrNot() {
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users");
         ref.child(hisUid).child("BlockedUsers").orderByChild("id").equalTo(myUid)
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        for (DataSnapshot ds: snapshot.getChildren()){
-                            if (ds.exists()){
+                        for (DataSnapshot ds : snapshot.getChildren()) {
+                            if (ds.exists()) {
                                 StyleableToast st = new StyleableToast(Chat.this, "You're blocked by this user", Toast.LENGTH_LONG);
                                 st.setBackgroundColor(Color.parseColor("#001E55"));
                                 st.setTextColor(Color.WHITE);
@@ -346,12 +346,12 @@ public class Chat extends AppCompatActivity implements View.OnClickListener {
                     @SuppressLint("SetTextI18n")
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        for (DataSnapshot ds: snapshot.getChildren()){
-                            if (ds.exists()){
+                        for (DataSnapshot ds : snapshot.getChildren()) {
+                            if (ds.exists()) {
                                 blocked.setText("Unblock");
                                 myblock.setVisibility(View.VISIBLE);
                                 constraintLayout5.setVisibility(View.GONE);
-                              isBlocked = true;
+                                isBlocked = true;
                             }
                         }
                     }
@@ -364,7 +364,7 @@ public class Chat extends AppCompatActivity implements View.OnClickListener {
     }
 
     private void BlockUser() {
-        HashMap<String,String> hashMap = new HashMap<>();
+        HashMap<String, String> hashMap = new HashMap<>();
         hashMap.put("id", hisUid);
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users");
         ref.child(myUid).child("BlockedUsers").child(hisUid).setValue(hashMap)
@@ -393,8 +393,8 @@ public class Chat extends AppCompatActivity implements View.OnClickListener {
                 addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        for (DataSnapshot ds: snapshot.getChildren()){
-                            if (ds.exists()){
+                        for (DataSnapshot ds : snapshot.getChildren()) {
+                            if (ds.exists()) {
                                 ds.getRef().removeValue()
                                         .addOnSuccessListener(aVoid -> {
                                             StyleableToast st = new StyleableToast(Chat.this, "Unblocked", Toast.LENGTH_LONG);
@@ -406,7 +406,7 @@ public class Chat extends AppCompatActivity implements View.OnClickListener {
                                             constraintLayout5.setVisibility(View.VISIBLE);
                                             myblock.setVisibility(View.GONE);
                                         }).addOnFailureListener(e -> {
-                                            StyleableToast st = new StyleableToast(Chat.this,  e.getMessage(), Toast.LENGTH_LONG);
+                                            StyleableToast st = new StyleableToast(Chat.this, e.getMessage(), Toast.LENGTH_LONG);
                                             st.setBackgroundColor(Color.parseColor("#001E55"));
                                             st.setTextColor(Color.WHITE);
                                             st.setIcon(R.drawable.ic_error);
@@ -428,18 +428,19 @@ public class Chat extends AppCompatActivity implements View.OnClickListener {
                     }
                 });
     }
+
     private void sendChatImage(Intent intent) {
         Uri imageUri = intent.getParcelableExtra(Intent.EXTRA_STREAM);
-        if (imageUri != null){
+        if (imageUri != null) {
             image_uri = imageUri;
-           sendImage(image_uri);
+            sendImage(image_uri);
 
         }
     }
 
     private void sendChatVideo(Intent intent) {
         Uri videoUri = intent.getParcelableExtra(Intent.EXTRA_STREAM);
-        if (videoUri != null){
+        if (videoUri != null) {
             video_uri = videoUri;
             sendVideo(video_uri);
 
@@ -448,7 +449,7 @@ public class Chat extends AppCompatActivity implements View.OnClickListener {
 
     private void sendText(Intent intent) {
         String sharedText = intent.getStringExtra(Intent.EXTRA_TEXT);
-        if (sharedText!=null){
+        if (sharedText != null) {
             textBox.setText(sharedText);
         }
     }
@@ -492,7 +493,7 @@ public class Chat extends AppCompatActivity implements View.OnClickListener {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         bottomSheetDialog.cancel();
-        if (resultCode == RESULT_OK && requestCode == IMAGE_PICK_CODE){
+        if (resultCode == RESULT_OK && requestCode == IMAGE_PICK_CODE) {
             image_uri = Objects.requireNonNull(data).getData();
             sendImage(image_uri);
             bottomSheetDialog.cancel();
@@ -510,14 +511,14 @@ public class Chat extends AppCompatActivity implements View.OnClickListener {
         Toast.makeText(Chat.this, "Sending....",
                 Toast.LENGTH_LONG).show();
         notify = true;
-        String timeStamp = ""+System.currentTimeMillis();
-        String filenameAndPath = "ChatImages/"+"post_"+System.currentTimeMillis();
+        String timeStamp = "" + System.currentTimeMillis();
+        String filenameAndPath = "ChatImages/" + "post_" + System.currentTimeMillis();
         StorageReference ref = FirebaseStorage.getInstance().getReference().child(filenameAndPath);
         ref.putFile(video_uri).addOnSuccessListener(taskSnapshot -> {
             Task<Uri> uriTask = taskSnapshot.getStorage().getDownloadUrl();
-            while (!uriTask.isSuccessful());
+            while (!uriTask.isSuccessful()) ;
             String downloadUri = Objects.requireNonNull(uriTask.getResult()).toString();
-            if (uriTask.isSuccessful()){
+            if (uriTask.isSuccessful()) {
 
                 DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
                 HashMap<String, Object> hashMap = new HashMap<>();
@@ -535,7 +536,7 @@ public class Chat extends AppCompatActivity implements View.OnClickListener {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         ModelUser user = dataSnapshot.getValue(ModelUser.class);
-                        if (notify){
+                        if (notify) {
                             sendNotification(hisUid, user.getName(), "Sent a video");
 
                         }
@@ -560,7 +561,7 @@ public class Chat extends AppCompatActivity implements View.OnClickListener {
                 chatRef2.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if (!snapshot.exists()){
+                        if (!snapshot.exists()) {
                             chatRef2.child("id").setValue(myUid);
                         }
                     }
@@ -578,7 +579,7 @@ public class Chat extends AppCompatActivity implements View.OnClickListener {
 
     }
 
-    private String getfileExt(Uri video_uri){
+    private String getfileExt(Uri video_uri) {
         ContentResolver contentResolver = getContentResolver();
         MimeTypeMap mimeTypeMap = MimeTypeMap.getSingleton();
         return mimeTypeMap.getExtensionFromMimeType(contentResolver.getType(video_uri));
@@ -588,14 +589,14 @@ public class Chat extends AppCompatActivity implements View.OnClickListener {
         Toast.makeText(Chat.this, "Sending....",
                 Toast.LENGTH_LONG).show();
         notify = true;
-        String timeStamp = ""+System.currentTimeMillis();
-        String filenameAndPath = "ChatImages/"+"post_"+System.currentTimeMillis();
+        String timeStamp = "" + System.currentTimeMillis();
+        String filenameAndPath = "ChatImages/" + "post_" + System.currentTimeMillis();
         StorageReference ref = FirebaseStorage.getInstance().getReference().child(filenameAndPath);
         ref.putFile(image_uri).addOnSuccessListener(taskSnapshot -> {
             Task<Uri> uriTask = taskSnapshot.getStorage().getDownloadUrl();
-            while (!uriTask.isSuccessful());
+            while (!uriTask.isSuccessful()) ;
             String downloadUri = Objects.requireNonNull(uriTask.getResult()).toString();
-            if (uriTask.isSuccessful()){
+            if (uriTask.isSuccessful()) {
 
                 DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
                 HashMap<String, Object> hashMap = new HashMap<>();
@@ -612,7 +613,7 @@ public class Chat extends AppCompatActivity implements View.OnClickListener {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         ModelUser user = dataSnapshot.getValue(ModelUser.class);
-                        if (notify){
+                        if (notify) {
                             sendNotification(hisUid, user.getName(), "Sent a Image");
 
                         }
@@ -637,7 +638,7 @@ public class Chat extends AppCompatActivity implements View.OnClickListener {
                 chatRef2.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if (!snapshot.exists()){
+                        if (!snapshot.exists()) {
                             chatRef2.child("id").setValue(myUid);
                         }
                     }
@@ -656,15 +657,15 @@ public class Chat extends AppCompatActivity implements View.OnClickListener {
 
     }
 
-    private void seenMessage(){
+    private void seenMessage() {
         final String hisUid = getIntent().getStringExtra("hisUid");
         databaseReference = FirebaseDatabase.getInstance().getReference("Chats");
         valueEventListener = databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()){
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     ModelChat modelChat = snapshot.getValue(ModelChat.class);
-                    if (Objects.requireNonNull(modelChat).getReceiver().equals(myUid) && modelChat.getSender().equals(hisUid)){
+                    if (Objects.requireNonNull(modelChat).getReceiver().equals(myUid) && modelChat.getSender().equals(hisUid)) {
                         HashMap<String, Object> hashMap = new HashMap<>();
                         hashMap.put("isSeen", true);
                         snapshot.getRef().updateChildren(hashMap);
@@ -677,7 +678,6 @@ public class Chat extends AppCompatActivity implements View.OnClickListener {
 
             }
         });
-
 
 
     }
@@ -698,7 +698,7 @@ public class Chat extends AppCompatActivity implements View.OnClickListener {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 ModelUser user = dataSnapshot.getValue(ModelUser.class);
-                if (notify){
+                if (notify) {
                     sendNotification(hisUid, user.getName(), "Sent a message");
 
                 }
@@ -718,13 +718,13 @@ public class Chat extends AppCompatActivity implements View.OnClickListener {
 
     }
 
-    private void sendNotification(final String hisId, final String name,final String message){
+    private void sendNotification(final String hisId, final String name, final String message) {
         DatabaseReference allToken = FirebaseDatabase.getInstance().getReference("Tokens");
         Query query = allToken.orderByKey().equalTo(hisId);
         query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot ds: snapshot.getChildren()){
+                for (DataSnapshot ds : snapshot.getChildren()) {
                     Token token = ds.getValue(Token.class);
                     Data data = new Data(myUid, name + " : " + message, "New Message", hisId, R.drawable.logo);
                     Sender sender = new Sender(data, token.getToken());
@@ -741,7 +741,7 @@ public class Chat extends AppCompatActivity implements View.OnClickListener {
                             public void onErrorResponse(VolleyError error) {
                                 Log.d("JSON_RESPONSE", "onResponse" + error.toString());
                             }
-                        }){
+                        }) {
                             @Override
                             public Map<String, String> getHeaders() throws AuthFailureError {
                                 Map<String, String> headers = new HashMap<>();
@@ -751,7 +751,7 @@ public class Chat extends AppCompatActivity implements View.OnClickListener {
                             }
                         };
                         requestQueue.add(jsonObjectRequest);
-                    }catch (Exception e){
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
                 }
@@ -765,7 +765,7 @@ public class Chat extends AppCompatActivity implements View.OnClickListener {
     }
 
 
-    private void readMessage(){
+    private void readMessage() {
         final String hisUid = getIntent().getStringExtra("hisUid");
         nChat = new ArrayList<>();
         databaseReference = FirebaseDatabase.getInstance().getReference("Chats");
@@ -773,10 +773,10 @@ public class Chat extends AppCompatActivity implements View.OnClickListener {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 nChat.clear();
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()){
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     ModelChat chat = snapshot.getValue(ModelChat.class);
                     if (Objects.requireNonNull(chat).getReceiver().equals(myUid) && chat.getSender().equals(hisUid) ||
-                    chat.getReceiver().equals(hisUid) && chat.getSender().equals(myUid)){
+                            chat.getReceiver().equals(hisUid) && chat.getSender().equals(myUid)) {
                         nChat.add(chat);
                     }
 
@@ -793,21 +793,22 @@ public class Chat extends AppCompatActivity implements View.OnClickListener {
         });
     }
 
-    private void checkOnlineStatus(String status){
+    private void checkOnlineStatus(String status) {
         databaseReference = FirebaseDatabase.getInstance().getReference("Users").child(myUid);
         HashMap<String, Object> hashMap = new HashMap<>();
         hashMap.put("status", status);
         databaseReference.updateChildren(hashMap);
     }
-    private void checkTypingStatus(String typing){
+
+    private void checkTypingStatus(String typing) {
         databaseReference = FirebaseDatabase.getInstance().getReference("Users").child(myUid);
         HashMap<String, Object> hashMap = new HashMap<>();
         hashMap.put("typingTo", typing);
         databaseReference.updateChildren(hashMap);
     }
 
-    private void createBottomSheetDialog(){
-        if (bottomSheetDialog == null){
+    private void createBottomSheetDialog() {
+        if (bottomSheetDialog == null) {
             @SuppressLint("InflateParams") View view = LayoutInflater.from(this).inflate(R.layout.add_bottom_sheet, null);
             constraintLayout3 = view.findViewById(R.id.constraintLayout3);
             delete = view.findViewById(R.id.delete);
@@ -818,8 +819,8 @@ public class Chat extends AppCompatActivity implements View.OnClickListener {
         }
     }
 
-    private void createBottomDialog(){
-        if ( bottomDialog == null){
+    private void createBottomDialog() {
+        if (bottomDialog == null) {
             @SuppressLint("InflateParams") View view = LayoutInflater.from(this).inflate(R.layout.more_bottom_sheet, null);
             block = view.findViewById(R.id.chatshare);
             info = view.findViewById(R.id.appshare);
@@ -848,51 +849,47 @@ public class Chat extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     protected void onResume() {
-       checkOnlineStatus("online");
+        checkOnlineStatus("online");
         super.onResume();
     }
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.constraintLayout3:
                 //Check Permission
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                     if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
-                            == PackageManager.PERMISSION_DENIED){
+                            == PackageManager.PERMISSION_DENIED) {
                         String[] permissions = {Manifest.permission.READ_EXTERNAL_STORAGE};
                         requestPermissions(permissions, PERMISSION_CODE);
-                    }
-                    else {
+                    } else {
                         pickImageFromGallery();
                     }
-                }
-                else {
+                } else {
                     pickImageFromGallery();
                 }
 
                 break;
             case R.id.delete:
                 //Check Permission
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                     if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
-                            == PackageManager.PERMISSION_DENIED){
+                            == PackageManager.PERMISSION_DENIED) {
                         String[] permissions = {Manifest.permission.READ_EXTERNAL_STORAGE};
                         requestPermissions(permissions, PERMISSION_CODE);
-                    }
-                    else {
+                    } else {
                         chooseVideo();
                     }
-                }
-                else {
+                } else {
                     chooseVideo();
                 }
                 break;
             case R.id.chatshare:
                 bottomDialog.cancel();
-                if (isBlocked){
+                if (isBlocked) {
                     unBlockUser();
-                }else {
+                } else {
                     BlockUser();
 
                 }

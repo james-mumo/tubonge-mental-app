@@ -1,13 +1,5 @@
 package com.jamesmumo.tubonge.user;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.widget.NestedScrollView;
-import androidx.fragment.app.FragmentManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
@@ -20,6 +12,14 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.widget.NestedScrollView;
+import androidx.fragment.app.FragmentManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.RequestQueue;
@@ -36,16 +36,16 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
-import com.muddzdev.styleabletoastlibrary.StyleableToast;
+import com.jamesmumo.tubonge.R;
+import com.jamesmumo.tubonge.SharedPref;
 import com.jamesmumo.tubonge.adapter.AdapterPost;
 import com.jamesmumo.tubonge.model.ModelPost;
-import com.jamesmumo.tubonge.R;
 import com.jamesmumo.tubonge.model.ModelUser;
 import com.jamesmumo.tubonge.notifications.Data;
 import com.jamesmumo.tubonge.notifications.Sender;
 import com.jamesmumo.tubonge.notifications.Token;
 import com.jamesmumo.tubonge.shareChat.Chat;
-import com.jamesmumo.tubonge.SharedPref;
+import com.muddzdev.styleabletoastlibrary.StyleableToast;
 import com.squareup.picasso.Picasso;
 import com.tapadoo.alerter.Alerter;
 
@@ -65,10 +65,10 @@ public class UserProfile extends AppCompatActivity {
     FirebaseDatabase firebaseDatabase;
     FirebaseUser firebaseUser;
 
-    TextView mUsername, mName,noFollowers,noFollowing,noPost;
+    TextView mUsername, mName, noFollowers, noFollowing, noPost;
     CircleImageView circularImageView;
-    TextView  bio, link, location;
-    RelativeLayout bio_layout, web_layout,location_layout,followingly,followersly;
+    TextView bio, link, location;
+    RelativeLayout bio_layout, web_layout, location_layout, followingly, followersly;
     ProgressBar pb;
     ConstraintLayout constraintLayout;
     RecyclerView recyclerView;
@@ -77,9 +77,9 @@ public class UserProfile extends AppCompatActivity {
     AdapterPost adapterPost;
     String uid;
     private String userId;
-    Button follow,following;
+    Button follow, following;
     ImageView imageView3;
-     String hisUid;
+    String hisUid;
     SharedPref sharedPref;
     @SuppressWarnings("unused")
     private RequestQueue requestQueue;
@@ -92,16 +92,16 @@ public class UserProfile extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         sharedPref = new SharedPref(this);
-        if (sharedPref.loadNightModeState()){
+        if (sharedPref.loadNightModeState()) {
             setTheme(R.style.DarkTheme);
-        }else setTheme(R.style.AppTheme);
+        } else setTheme(R.style.AppTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
         recyclerView = findViewById(R.id.postView);
         //Firebase
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         //Intent
-         hisUid = getIntent().getStringExtra("hisUid");
+        hisUid = getIntent().getStringExtra("hisUid");
         firebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference mDatabase = firebaseDatabase.getReference("Users");
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
@@ -144,7 +144,7 @@ public class UserProfile extends AppCompatActivity {
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
 
-                if (!recyclerView.canScrollVertically(1) && newState==RecyclerView.SCROLL_STATE_IDLE) {
+                if (!recyclerView.canScrollVertically(1) && newState == RecyclerView.SCROLL_STATE_IDLE) {
                     mCurrenPage++;
                     loadPost();
                 }
@@ -157,15 +157,15 @@ public class UserProfile extends AppCompatActivity {
         query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot ds: dataSnapshot.getChildren()) {
+                for (DataSnapshot ds : dataSnapshot.getChildren()) {
 
-                    String name = ""+ ds.child("name").getValue();
-                    String username = ""+ ds.child("username").getValue();
-                    String photo = ""+ ds.child("photo").getValue();
+                    String name = "" + ds.child("name").getValue();
+                    String username = "" + ds.child("username").getValue();
+                    String photo = "" + ds.child("photo").getValue();
 
-                    String bi = ""+ ds.child("bio").getValue();
-                    String lik = ""+ ds.child("link").getValue();
-                    String loc = ""+ ds.child("location").getValue();
+                    String bi = "" + ds.child("bio").getValue();
+                    String lik = "" + ds.child("link").getValue();
+                    String loc = "" + ds.child("location").getValue();
 
                     mName.setText(name);
                     mUsername.setText(username);
@@ -189,8 +189,7 @@ public class UserProfile extends AppCompatActivity {
 
                     try {
                         Picasso.get().load(photo).into(circularImageView);
-                    }
-                    catch (Exception e ){
+                    } catch (Exception e) {
                         Picasso.get().load(R.drawable.avatar).into(circularImageView);
                     }
 
@@ -240,13 +239,13 @@ public class UserProfile extends AppCompatActivity {
 
 
         follow.setOnClickListener(v -> {
-                FirebaseDatabase.getInstance().getReference().child("Follow").child(firebaseUser.getUid())
-                        .child("Following").child(hisUid).setValue(true);
-                FirebaseDatabase.getInstance().getReference().child("Follow").child(hisUid)
-                        .child("Followers").child(firebaseUser.getUid()).setValue(true);
-                follow.setVisibility(View.GONE);
-                following.setVisibility(View.VISIBLE);
-            addToHisNotification(""+hisUid);
+            FirebaseDatabase.getInstance().getReference().child("Follow").child(firebaseUser.getUid())
+                    .child("Following").child(hisUid).setValue(true);
+            FirebaseDatabase.getInstance().getReference().child("Follow").child(hisUid)
+                    .child("Followers").child(firebaseUser.getUid()).setValue(true);
+            follow.setText("Following");
+            following.setVisibility(View.VISIBLE);
+            addToHisNotification("" + hisUid);
             notify = true;
 
             DatabaseReference ref1 = FirebaseDatabase.getInstance().getReference("Users").child(userId);
@@ -254,7 +253,7 @@ public class UserProfile extends AppCompatActivity {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     ModelUser user = snapshot.getValue(ModelUser.class);
-                    if (notify){
+                    if (notify) {
                         sendNotification(hisUid, Objects.requireNonNull(user).getName(), "Started following you");
 
                     }
@@ -288,21 +287,23 @@ public class UserProfile extends AppCompatActivity {
         getFollowing();
         getPost();
 
-        postList= new ArrayList<>();
+        postList = new ArrayList<>();
         loadPost();
     }
+
     @Override
     protected void onStart() {
         super.onStart();
         isFollowing();
-        if (hisUid.equals(userId)){
+        if (hisUid.equals(userId)) {
             FragmentManager fragmentManager = getSupportFragmentManager();
             ProfileFragment profileFragment = new ProfileFragment();
-            fragmentManager.beginTransaction().replace(R.id.container,profileFragment).commit();
+            fragmentManager.beginTransaction().replace(R.id.container, profileFragment).commit();
         }
     }
-    private void addToHisNotification(String hisUid){
-        String timestamp = ""+System.currentTimeMillis();
+
+    private void addToHisNotification(String hisUid) {
+        String timestamp = "" + System.currentTimeMillis();
         HashMap<Object, String> hashMap = new HashMap<>();
         hashMap.put("pId", "");
         hashMap.put("timestamp", timestamp);
@@ -319,16 +320,17 @@ public class UserProfile extends AppCompatActivity {
                 });
 
     }
+
     private void isFollowing() {
         DatabaseReference mRef = FirebaseDatabase.getInstance().getReference()
                 .child("Follow").child(firebaseUser.getUid()).child("Following");
         mRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.child(hisUid).exists()){
-                 follow.setVisibility(View.GONE);
+                if (dataSnapshot.child(hisUid).exists()) {
+                    follow.setVisibility(View.GONE);
                     following.setVisibility(View.VISIBLE);
-                }else {
+                } else {
                     follow.setVisibility(View.VISIBLE);
                     following.setVisibility(View.GONE);
                 }
@@ -340,6 +342,7 @@ public class UserProfile extends AppCompatActivity {
             }
         });
     }
+
     private void loadPost() {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setReverseLayout(true);
@@ -351,7 +354,7 @@ public class UserProfile extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 postList.clear();
-                for (DataSnapshot ds: dataSnapshot.getChildren()){
+                for (DataSnapshot ds : dataSnapshot.getChildren()) {
                     ModelPost modelPost = ds.getValue(ModelPost.class);
                     postList.add(modelPost);
                     adapterPost = new AdapterPost(UserProfile.this, postList);
@@ -365,14 +368,15 @@ public class UserProfile extends AppCompatActivity {
             }
         });
     }
+
     @SuppressWarnings("SameParameterValue")
-    private void sendNotification(final String hisId, final String name,final String message){
+    private void sendNotification(final String hisId, final String name, final String message) {
         DatabaseReference allToken = FirebaseDatabase.getInstance().getReference("Tokens");
         Query query = allToken.orderByKey().equalTo(hisId);
         query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot ds: snapshot.getChildren()){
+                for (DataSnapshot ds : snapshot.getChildren()) {
                     Token token = ds.getValue(Token.class);
                     Data data = new Data(userId, name + " : " + message, "New Message", hisId, R.drawable.logo);
                     Sender sender = new Sender(data, token.getToken());
@@ -389,7 +393,7 @@ public class UserProfile extends AppCompatActivity {
                             public void onErrorResponse(VolleyError error) {
                                 Log.d("JSON_RESPONSE", "onResponse" + error.toString());
                             }
-                        }){
+                        }) {
                             @Override
                             public Map<String, String> getHeaders() throws AuthFailureError {
                                 Map<String, String> headers = new HashMap<>();
@@ -399,7 +403,7 @@ public class UserProfile extends AppCompatActivity {
                             }
                         };
                         requestQueue.add(jsonObjectRequest);
-                    }catch (Exception e){
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
                 }
@@ -412,14 +416,14 @@ public class UserProfile extends AppCompatActivity {
         });
     }
 
-    private void  getFollowers(){
+    private void getFollowers() {
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference()
                 .child("Follow").child(hisUid).child("Followers");
         reference.addValueEventListener(new ValueEventListener() {
             @SuppressLint("SetTextI18n")
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                noFollowers.setText(""+dataSnapshot.getChildrenCount());
+                noFollowers.setText("" + dataSnapshot.getChildrenCount());
             }
 
             @Override
@@ -428,14 +432,15 @@ public class UserProfile extends AppCompatActivity {
             }
         });
     }
-    private void  getFollowing(){
+
+    private void getFollowing() {
         DatabaseReference reference1 = FirebaseDatabase.getInstance().getReference()
                 .child("Follow").child(hisUid).child("Following");
         reference1.addValueEventListener(new ValueEventListener() {
             @SuppressLint("SetTextI18n")
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                noFollowing.setText(""+dataSnapshot.getChildrenCount());
+                noFollowing.setText("" + dataSnapshot.getChildrenCount());
             }
 
             @Override
@@ -444,20 +449,21 @@ public class UserProfile extends AppCompatActivity {
             }
         });
     }
-    private void getPost(){
+
+    private void getPost() {
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Posts");
         reference.addValueEventListener(new ValueEventListener() {
             @SuppressLint("SetTextI18n")
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 int i = 0;
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()){
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     ModelPost post = snapshot.getValue(ModelPost.class);
-                    if (Objects.requireNonNull(post).getId().equals(hisUid)){
+                    if (Objects.requireNonNull(post).getId().equals(hisUid)) {
                         i++;
                     }
                 }
-                noPost.setText(""+i);
+                noPost.setText("" + i);
             }
 
             @Override

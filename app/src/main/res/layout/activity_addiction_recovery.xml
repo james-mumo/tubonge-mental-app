@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/backgroundcolor">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:id="@+id/topRelLayout"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="?attr/headercolor">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/bungee"
+                android:rotation="-2"
+                android:text="@string/struggling_with_addiction"
+                android:textColor="?attr/headertextcolor"
+                android:textSize="19dp"
+                android:translationZ="333dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="110dp"
+                android:fontFamily="@font/bungee"
+                android:rotation="2"
+                android:rotationX="0"
+                android:text="@string/meet_professionals_qualified_professionals_to_help_you"
+                android:textColor="?attr/headertextcolor"
+                android:textSize="14dp"
+                android:translationZ="333dp" />
+
+            <ImageView
+                android:layout_width="79dp"
+                android:layout_height="59dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/abs1" />
+
+            <ImageView
+                android:layout_width="109dp"
+                android:layout_height="99dp"
+                android:layout_alignParentEnd="false"
+                android:layout_marginTop="80dp"
+                android:src="@drawable/graphegg" />
+
+            <ImageView
+                android:layout_width="109dp"
+                android:layout_height="99dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="90dp"
+
+                android:src="@drawable/chat" />
+
+
+            <!--            <ImageView-->
+            <!--                android:id="@+id/image_view"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="200dp"-->
+            <!--                android:scaleType="centerInside"-->
+            <!--                android:src="@drawable/avatar" />-->
+
+        </RelativeLayout>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/topRelLayout" />
+
+    </RelativeLayout>
+</androidx.core.widget.NestedScrollView>

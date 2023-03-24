@@ -10,20 +10,20 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/header"
-        android:background="?attr/headercolor"
         android:layout_width="match_parent"
-        android:layout_height="50dp">
+        android:layout_height="50dp"
+        android:background="?attr/headercolor">
 
         <ImageView
             android:id="@+id/imageView3"
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:layout_marginStart="16dp"
+            android:contentDescription="@string/contentdescription"
             android:src="@drawable/ic_cancel"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:contentDescription="@string/contentdescription"
             app:tint="#fff" />
 
         <TextView
@@ -31,15 +31,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:text="Create group"
             android:fontFamily="@font/black"
-            android:textSize="24dp"
-            tools:ignore="HardcodedText,SpUsage"
+            android:text="Create Room"
             android:textColor="?attr/headertextcolor"
+            android:textSize="24dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/imageView4"
             app:layout_constraintStart_toEndOf="@+id/imageView3"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="HardcodedText,SpUsage" />
 
         <ImageView
             android:id="@+id/imageView4"
@@ -47,237 +47,259 @@
             android:layout_height="32dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
-            android:visibility="invisible"
             android:layout_marginBottom="8dp"
+            android:contentDescription="@string/contentdescription"
             android:src="@drawable/ic_check"
+            android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:contentDescription="@string/contentdescription"
             app:tint="#fff" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ProgressBar
         android:id="@+id/pb"
-        android:layout_width="match_parent"
-        android:layout_below="@+id/header"
         style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/header"
         android:indeterminateOnly="true"
-        android:visibility="gone"
-        android:layout_height="wrap_content" />
+        android:visibility="gone" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_below="@+id/pb"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_below="@+id/pb">
 
-        <RelativeLayout
+        <androidx.cardview.widget.CardView
             android:id="@+id/profileLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:background="?attr/layoutcolor"
+            app:cardCornerRadius="5dp"
+            app:cardElevation="4dp"
+            app:cardUseCompatPadding="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <ImageView
-                android:id="@+id/edit"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:layout_below="@+id/profile_image"
-                android:layout_centerInParent="true"
-                android:layout_marginTop="12dp"
-                android:layout_marginBottom="12dp"
-                android:src="@drawable/ic_edit_edit"
-                android:contentDescription="@string/contentdescription" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="?attr/layoutcolor">
+
+                <ImageView
+                    android:id="@+id/edit"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_below="@+id/profile_image"
+                    android:layout_centerInParent="true"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="12dp"
+                    android:contentDescription="@string/contentdescription"
+                    android:src="@drawable/compose" />
 
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/profile_image"
-                android:layout_width="134dp"
-                android:layout_height="111dp"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="12dp"
-                android:src="@drawable/group" />
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/profile_image"
+                    android:layout_width="145dp"
+                    android:layout_height="125dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="5dp"
+                    android:src="@drawable/abs111" />
 
-        </RelativeLayout>
+            </RelativeLayout>
 
-        <RelativeLayout
-            android:id="@+id/relativeLayout"
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/bottomLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            app:cardCornerRadius="5dp"
+            app:cardElevation="4dp"
+            app:cardUseCompatPadding="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/profileLayout">
 
             <RelativeLayout
-                android:id="@+id/name_layout"
+                android:id="@+id/relativeLayout"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:background="?attr/layoutcolor">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp">
 
-                <ImageView
-                    android:id="@+id/name_img"
-                    android:layout_width="28dp"
-                    android:layout_height="28dp"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="7dp"
+                <RelativeLayout
+                    android:id="@+id/name_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="?attr/layoutcolor">
+
+                    <ImageView
+                        android:id="@+id/name_img"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginBottom="10dp"
+                        android:contentDescription="@string/contentdescription"
+                        android:src="@drawable/ic_name_edit" />
+
+                    <EditText
+                        android:id="@+id/password"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_toEndOf="@+id/name_img"
+                        android:background="#0000"
+                        android:fontFamily="@font/med"
+                        android:hint="Room Name"
+                        android:importantForAutofill="no"
+                        android:inputType="textFilter|textVisiblePassword"
+                        android:maxLines="1"
+                        android:textColor="?attr/textcolor"
+                        android:textColorHint="?attr/textcolor"
+                        android:textSize="20dp"
+                        tools:ignore="HardcodedText,SpUsage" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/username_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_below="@+id/name_layout"
+                    android:background="?attr/layoutcolor">
+
+                    <ImageView
+                        android:id="@+id/username_img"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginBottom="10dp"
+                        android:contentDescription="@string/contentdescription"
+                        android:src="@drawable/ic_username_edit" />
+
+                    <EditText
+                        android:id="@+id/username"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_toEndOf="@+id/username_img"
+                        android:background="#0000"
+                        android:fontFamily="@font/med"
+                        android:hint="Room BioHeader"
+                        android:importantForAutofill="no"
+                        android:inputType="textFilter|textVisiblePassword"
+                        android:maxLines="1"
+                        android:textColor="?attr/textcolor"
+                        android:textColorHint="?attr/textcolor"
+                        android:textSize="20dp"
+                        tools:ignore="HardcodedText,SpUsage" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/bio_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_below="@+id/username_layout"
+                    android:background="?attr/layoutcolor">
+
+                    <ImageView
+                        android:id="@+id/bio_img"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginBottom="10dp"
+                        android:contentDescription="@string/contentdescription"
+                        android:src="@drawable/ic_info" />
+
+                    <EditText
+                        android:id="@+id/bio"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_toEndOf="@+id/bio_img"
+                        android:background="#0000"
+                        android:fontFamily="@font/med"
+                        android:hint="Room Bio"
+                        android:importantForAutofill="no"
+                        android:inputType="textMultiLine|textVisiblePassword"
+                        android:maxLines="3"
+                        android:textColor="?attr/textcolor"
+                        android:textColorHint="?attr/textcolor"
+                        android:textSize="20dp"
+                        tools:ignore="HardcodedText,SpUsage" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/web_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_below="@+id/bio_layout"
+                    android:background="?attr/layoutcolor">
+
+                    <ImageView
+                        android:id="@+id/web_img"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginBottom="7dp"
+                        android:contentDescription="@string/contentdescription"
+                        android:src="@drawable/ic_link" />
+
+                    <EditText
+                        android:id="@+id/link"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_toEndOf="@+id/web_img"
+                        android:background="#0000"
+                        android:fontFamily="@font/med"
+                        android:hint="Link"
+                        android:importantForAutofill="no"
+                        android:inputType="textFilter|textVisiblePassword"
+                        android:maxLines="1"
+                        android:textColor="?attr/textcolor"
+                        android:textColorHint="?attr/textcolor"
+                        android:textSize="20dp"
+                        tools:ignore="HardcodedText,SpUsage" />
+                </RelativeLayout>
+
+                <Button
+                    android:id="@+id/button3"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_below="@+id/web_layout"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="24dp"
                     android:layout_marginBottom="10dp"
-                    android:src="@drawable/ic_name_edit"
-                    android:contentDescription="@string/contentdescription" />
-
-                <EditText
-                    android:background="#0000"
-                    android:layout_marginRight="10dp"
+                    android:background="@drawable/blue_btn_radius"
+                    android:fontFamily="@font/bold"
+                    android:text="Create Group"
+                    android:textAlignment="center"
+                    android:textAllCaps="false"
+                    android:textColor="#fff"
                     android:textSize="20dp"
-                    android:fontFamily="@font/med"
-                    tools:ignore="HardcodedText,SpUsage"
-                    android:id="@+id/password"
-                    android:hint="Group Name *"
-                    android:inputType="textFilter|textVisiblePassword"
-                    android:textColor="?attr/textcolor"
-                    android:maxLines="1"
-                    android:layout_marginLeft="10dp"
-                    android:textColorHint="?attr/textcolor"
-                    android:layout_toEndOf="@+id/name_img"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:importantForAutofill="no" />
+                    tools:ignore="HardcodedText,SpUsage" />
+
 
             </RelativeLayout>
-            <RelativeLayout
-                android:id="@+id/username_layout"
-                android:layout_below="@+id/name_layout"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:background="?attr/layoutcolor">
-
-                <ImageView
-                    android:id="@+id/username_img"
-                    android:layout_width="28dp"
-                    android:layout_height="28dp"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="7dp"
-                    android:layout_marginBottom="10dp"
-                    android:src="@drawable/ic_username_edit"
-                    android:contentDescription="@string/contentdescription" />
-
-                <EditText
-                    android:background="#0000"
-                    android:layout_marginRight="10dp"
-                    android:textSize="20dp"
-                    android:fontFamily="@font/med"
-                    android:id="@+id/username"
-                    tools:ignore="HardcodedText,SpUsage"
-                    android:digits="abcdefghijklmnopqrstuvwxyz1234567890._"
-                    android:hint="Group Username *"
-                    android:inputType="textFilter|textVisiblePassword"
-                    android:textColor="?attr/textcolor"
-                    android:maxLines="1"
-                    android:layout_marginLeft="10dp"
-                    android:textColorHint="?attr/textcolor"
-                    android:layout_toEndOf="@+id/username_img"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:importantForAutofill="no" />
-            </RelativeLayout>
-            <RelativeLayout
-                android:id="@+id/bio_layout"
-                android:layout_below="@+id/username_layout"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:background="?attr/layoutcolor">
-
-                <ImageView
-                    android:id="@+id/bio_img"
-                    android:layout_width="28dp"
-                    android:layout_height="28dp"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="7dp"
-                    android:layout_marginBottom="10dp"
-                    android:src="@drawable/ic_info"
-                    android:contentDescription="@string/contentdescription" />
-
-                <EditText
-                    android:background="#0000"
-                    android:layout_marginRight="10dp"
-                    android:textSize="20dp"
-                    android:fontFamily="@font/med"
-                    android:id="@+id/bio"
-                    android:hint="Group Bio"
-                    android:inputType="textMultiLine|textVisiblePassword"
-                    android:textColor="?attr/textcolor"
-                    tools:ignore="HardcodedText,SpUsage"
-                    android:maxLines="3"
-                    android:layout_marginLeft="10dp"
-                    android:textColorHint="?attr/textcolor"
-                    android:layout_toEndOf="@+id/bio_img"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:importantForAutofill="no" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/web_layout"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_below="@+id/bio_layout"
-                android:background="?attr/layoutcolor">
-
-                <ImageView
-                    android:id="@+id/web_img"
-                    android:layout_width="28dp"
-                    android:layout_height="28dp"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="7dp"
-                    android:layout_marginBottom="7dp"
-                    android:src="@drawable/ic_link"
-                    android:contentDescription="@string/contentdescription" />
-
-                <EditText
-                    android:background="#0000"
-                    android:layout_marginRight="10dp"
-                    android:textSize="20dp"
-                    android:fontFamily="@font/med"
-                    android:id="@+id/link"
-                    android:hint="Link"
-                    android:inputType="textFilter|textVisiblePassword"
-                    android:textColor="?attr/textcolor"
-                    android:maxLines="1"
-                    tools:ignore="HardcodedText,SpUsage"
-                    android:layout_marginLeft="10dp"
-                    android:textColorHint="?attr/textcolor"
-                    android:layout_toEndOf="@+id/web_img"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:importantForAutofill="no" />
-            </RelativeLayout>
-            <Button
-                android:id="@+id/button3"
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:textAllCaps="false"
-                android:background="@drawable/blue_btn_radius"
-                android:fontFamily="@font/bold"
-                android:text="Create Group"
-                android:textAlignment="center"
-                android:layout_marginRight="24dp"
-                android:layout_marginLeft="24dp"
-                android:layout_below="@+id/web_layout"
-                android:layout_marginTop="30dp"
-                android:textColor="#fff"
-                android:textSize="20dp"
-                tools:ignore="HardcodedText,SpUsage"
-                />
-
-
-        </RelativeLayout>
+        </androidx.cardview.widget.CardView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-    
+
 </RelativeLayout>

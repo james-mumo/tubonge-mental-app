@@ -2,18 +2,17 @@ package com.jamesmumo.tubonge.user;
 
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -22,6 +21,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.jamesmumo.tubonge.R;
 import com.jamesmumo.tubonge.adapter.AdapterPost;
 import com.jamesmumo.tubonge.adapter.AdapterStory;
 import com.jamesmumo.tubonge.authEmail.Finish;
@@ -30,8 +30,9 @@ import com.jamesmumo.tubonge.model.ModelPost;
 import com.jamesmumo.tubonge.model.ModelStory;
 import com.jamesmumo.tubonge.notifications.NotificationScreen;
 import com.jamesmumo.tubonge.post.Post;
-import com.jamesmumo.tubonge.R;
 import com.jamesmumo.tubonge.search.Search;
+import com.jamesmumo.tubonge.userEvents.ThoughtsDiary;
+import com.jamesmumo.tubonge.userEvents.ViewEvents;
 import com.squareup.picasso.Picasso;
 import com.tapadoo.alerter.Alerter;
 
@@ -46,10 +47,10 @@ public class HomeFragment extends Fragment {
 
     FirebaseAuth mAuth;
     RecyclerView recyclerView;
-    List<ModelPost>postList;
+    List<ModelPost> postList;
     AdapterPost adapterPost;
     ProgressBar pb;
-    ImageView imageView4,imageView3;
+    ImageView imageView4, imageView3;
 
     private AdapterStory story;
     private List<ModelStory> storyList;
@@ -58,7 +59,7 @@ public class HomeFragment extends Fragment {
     List<String> followingList;
     List<String> followingSList;
     CircleImageView circular;
-    ConstraintLayout post;
+    LinearLayout post, events, linear_layout3;
 
     private static final int TOTAL_ITEMS_TO_LOAD = 7;
     private int mCurrenPage = 1;
@@ -67,14 +68,16 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-      View view = inflater.inflate(R.layout.fragment_home, container, false);
+        View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-      recyclerView = view.findViewById(R.id.postView);
+        recyclerView = view.findViewById(R.id.postView);
+        linear_layout3 = view.findViewById(R.id.linear_layout3);
 
 //        RecyclerView storyView = view.findViewById(R.id.storyView);
 //        storyView.setHasFixedSize(true);
-        circular= view.findViewById(R.id.circular);
-        post= view.findViewById(R.id.post);
+        circular = view.findViewById(R.id.circular);
+        post = view.findViewById(R.id.post);
+        events = view.findViewById(R.id.events_btn);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(),
                 LinearLayoutManager.HORIZONTAL, false);
 //        storyView.setLayoutManager(linearLayoutManager);
@@ -94,7 +97,7 @@ public class HomeFragment extends Fragment {
         layoutManager.setStackFromEnd(true);
         layoutManager.setReverseLayout(true);
         recyclerView.setLayoutManager(layoutManager);
-        postList= new ArrayList<>();
+        postList = new ArrayList<>();
         checkFollowing();
         checkSFollowing();
 
@@ -102,10 +105,17 @@ public class HomeFragment extends Fragment {
             Intent intent = new Intent(getActivity(), Post.class);
             startActivity(intent);
         });
+        events.setOnClickListener(v -> {
+            Intent intent = new Intent(getActivity(), ViewEvents.class);
+            startActivity(intent);
+        });
 
         imageView4.setOnClickListener(v -> {
             Intent intent = new Intent(getActivity(), NotificationScreen.class);
             startActivity(intent);
+        });
+        linear_layout3.setOnClickListener(v -> {
+            startActivity(new Intent(getActivity(), ThoughtsDiary.class));
         });
 
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
@@ -113,64 +123,63 @@ public class HomeFragment extends Fragment {
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
 
-                if (!recyclerView.canScrollVertically(1) && newState==RecyclerView.SCROLL_STATE_IDLE) {
-                mCurrenPage++;
+                if (!recyclerView.canScrollVertically(1) && newState == RecyclerView.SCROLL_STATE_IDLE) {
+                    mCurrenPage++;
                     checkFollowing();
                 }
             }
         });
 
-      DatabaseReference  mDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(userId);
-      mDatabase.addValueEventListener(new ValueEventListener() {
-          @Override
-          public void onDataChange(@NonNull DataSnapshot snapshot) {
-              String email = Objects.requireNonNull(snapshot.child("email").getValue()).toString();
-              String username = Objects.requireNonNull(snapshot.child("username").getValue()).toString();
-              String name = Objects.requireNonNull(snapshot.child("name").getValue()).toString();
-              String photo = Objects.requireNonNull(snapshot.child("photo").getValue()).toString();
+        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(userId);
+        mDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String email = Objects.requireNonNull(snapshot.child("email").getValue()).toString();
+                String username = Objects.requireNonNull(snapshot.child("username").getValue()).toString();
+                String name = Objects.requireNonNull(snapshot.child("name").getValue()).toString();
+                String photo = Objects.requireNonNull(snapshot.child("photo").getValue()).toString();
 
-              try {
-                  Picasso.get().load(photo).placeholder(R.drawable.avatar).into(circular);
-              }catch (Exception e){
-                  Picasso.get().load(R.drawable.avatar).into(circular);
-              }
+                try {
+                    Picasso.get().load(photo).placeholder(R.drawable.avatar).into(circular);
+                } catch (Exception e) {
+                    Picasso.get().load(R.drawable.avatar).into(circular);
+                }
 
 
-              if (email.isEmpty()){
-                  if (username.isEmpty() || name.isEmpty()){
-                      Intent intent = new Intent(getActivity(), Final.class);
-                      startActivity(intent);
-                  }
+                if (email.isEmpty()) {
+                    if (username.isEmpty() || name.isEmpty()) {
+                        Intent intent = new Intent(getActivity(), Final.class);
+                        startActivity(intent);
+                    }
 
-              }else {
-                  if (username.isEmpty()){
-                      Intent intent = new Intent(getActivity(), Finish.class);
-                      startActivity(intent);
-                  }
-              }
+                } else {
+                    if (username.isEmpty()) {
+                        Intent intent = new Intent(getActivity(), Finish.class);
+                        startActivity(intent);
+                    }
+                }
 
-          }
+            }
 
-          @Override
-          public void onCancelled(@NonNull DatabaseError error) {
-              Alerter.create(requireActivity())
-                      .setTitle("Error")
-                      .setIcon(R.drawable.ic_error)
-                      .setBackgroundColorRes(R.color.colorPrimary)
-                      .setDuration(10000)
-                      .enableSwipeToDismiss()
-                      .setText(error.getMessage())
-                      .show();
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Alerter.create(requireActivity())
+                        .setTitle("Error")
+                        .setIcon(R.drawable.ic_error)
+                        .setBackgroundColorRes(R.color.colorPrimary)
+                        .setDuration(10000)
+                        .enableSwipeToDismiss()
+                        .setText(error.getMessage())
+                        .show();
 
-          }
-      });
+            }
+        });
 
-      return view;
+        return view;
     }
 
 
-
-    private void checkSFollowing(){
+    private void checkSFollowing() {
         followingSList = new ArrayList<>();
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Follow")
                 .child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid())
@@ -179,7 +188,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 followingSList.clear();
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()){
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     followingSList.add(snapshot.getKey());
                 }
                 readStory();
@@ -195,7 +204,7 @@ public class HomeFragment extends Fragment {
 
     }
 
-    private void checkFollowing(){
+    private void checkFollowing() {
         followingList = new ArrayList<>();
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Follow")
                 .child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid())
@@ -205,7 +214,7 @@ public class HomeFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 followingList.clear();
                 followingList.add(userId);
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()){
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     followingList.add(snapshot.getKey());
                 }
                 loadPost();
@@ -228,10 +237,10 @@ public class HomeFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 postList.clear();
-                for (DataSnapshot ds: dataSnapshot.getChildren()){
+                for (DataSnapshot ds : dataSnapshot.getChildren()) {
                     ModelPost modelPost = ds.getValue(ModelPost.class);
-                    for (String id : followingList){
-                        if (Objects.requireNonNull(modelPost).getId().equals(id)){
+                    for (String id : followingList) {
+                        if (Objects.requireNonNull(modelPost).getId().equals(id)) {
                             postList.add(modelPost);
                         }
                     }
@@ -249,24 +258,24 @@ public class HomeFragment extends Fragment {
         });
     }
 
-    private void readStory(){
+    private void readStory() {
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Story");
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 long timecurrent = System.currentTimeMillis();
                 storyList.clear();
-                storyList.add(new ModelStory("",0,0,"", Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()));
-                for (String id : followingSList){
+                storyList.add(new ModelStory("", 0, 0, "", Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()));
+                for (String id : followingSList) {
                     int countStory = 0;
                     ModelStory modelStory = null;
-                    for (DataSnapshot snapshot1 : snapshot.child(id).getChildren()){
+                    for (DataSnapshot snapshot1 : snapshot.child(id).getChildren()) {
                         modelStory = snapshot1.getValue(ModelStory.class);
-                        if (timecurrent > Objects.requireNonNull(modelStory).getTimestart() && timecurrent < modelStory.getTimeend()){
+                        if (timecurrent > Objects.requireNonNull(modelStory).getTimestart() && timecurrent < modelStory.getTimeend()) {
                             countStory++;
                         }
                     }
-                    if (countStory > 0){
+                    if (countStory > 0) {
                         storyList.add(modelStory);
                     }
                 }

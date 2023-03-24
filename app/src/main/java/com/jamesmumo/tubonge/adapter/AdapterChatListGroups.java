@@ -55,9 +55,9 @@ public class AdapterChatListGroups extends RecyclerView.Adapter<AdapterChatListG
         holder.mName.setText(GroupName);
         holder.mUsername.setText(GroupUsername);
         try {
-            Picasso.get().load(GroupIcon).placeholder(R.drawable.group).into(holder.avatar);
+            Picasso.get().load(GroupIcon).placeholder(R.drawable.abs111).into(holder.avatar);
         }catch (Exception e){
-            Picasso.get().load(R.drawable.group).into(holder.avatar);
+            Picasso.get().load(R.drawable.abs111).into(holder.avatar);
         }
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(context, GroupChat.class);

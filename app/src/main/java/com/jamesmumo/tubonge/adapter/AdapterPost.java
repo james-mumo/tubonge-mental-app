@@ -1,5 +1,7 @@
 package com.jamesmumo.tubonge.adapter;
 
+import static android.os.Environment.DIRECTORY_DOWNLOADS;
+
 import android.annotation.SuppressLint;
 import android.app.DownloadManager;
 import android.content.Context;
@@ -39,22 +41,22 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-import com.jamesmumo.tubonge.post.Report;
-import com.muddzdev.styleabletoastlibrary.StyleableToast;
-import com.pedromassango.doubleclick.DoubleClick;
-import com.pedromassango.doubleclick.DoubleClickListener;
 import com.jamesmumo.tubonge.Adpref;
+import com.jamesmumo.tubonge.R;
 import com.jamesmumo.tubonge.groups.ShareGroupActivity;
 import com.jamesmumo.tubonge.model.ModelPost;
-import com.jamesmumo.tubonge.post.PostLikedBy;
-import com.jamesmumo.tubonge.R;
 import com.jamesmumo.tubonge.post.PostDetails;
+import com.jamesmumo.tubonge.post.PostLikedBy;
+import com.jamesmumo.tubonge.post.Report;
+import com.jamesmumo.tubonge.post.UpdatePost;
 import com.jamesmumo.tubonge.search.Search;
 import com.jamesmumo.tubonge.shareChat.ShareActivity;
-import com.jamesmumo.tubonge.post.UpdatePost;
 import com.jamesmumo.tubonge.user.MediaView;
 import com.jamesmumo.tubonge.user.UserProfile;
 import com.jamesmumo.tubonge.welcome.GetTimeAgo;
+import com.muddzdev.styleabletoastlibrary.StyleableToast;
+import com.pedromassango.doubleclick.DoubleClick;
+import com.pedromassango.doubleclick.DoubleClickListener;
 import com.squareup.picasso.Picasso;
 import com.volokh.danylo.hashtaghelper.HashTagHelper;
 
@@ -65,8 +67,6 @@ import java.util.List;
 import java.util.Objects;
 
 import de.hdodenhof.circleimageview.CircleImageView;
-
-import static android.os.Environment.DIRECTORY_DOWNLOADS;
 
 @SuppressWarnings("ALL")
 public class AdapterPost extends RecyclerView.Adapter<AdapterPost.MyHolder> {
@@ -128,15 +128,15 @@ public class AdapterPost extends RecyclerView.Adapter<AdapterPost.MyHolder> {
         setLikes(holder, pId);
         setViews(holder, pId);
         String ed_text = holder.pText.getText().toString().trim();
-        if (ed_text.length() > 0) {
-            holder.constraintLayout9.setVisibility(View.VISIBLE);
-
-        } else {
-            holder.constraintLayout9.setVisibility(View.GONE);
-        }
+//        if (ed_text.length() > 0) {
+//            holder.constraintLayout9.setVisibility(View.VISIBLE);
+//
+//        } else {
+//            holder.constraintLayout9.setVisibility(View.GONE);
+//        }
 
         if (comment.equals("0")) {
-            holder.commentNo.setText("Comment");
+            holder.commentNo.setText("0");
 
         } else {
             holder.commentNo.setText(comment);
@@ -233,7 +233,7 @@ public class AdapterPost extends RecyclerView.Adapter<AdapterPost.MyHolder> {
             context.startActivity(intent);
         });
 
-        holder.more.setOnClickListener(v -> showMoreOptions(holder.more,name, id, userId, pId, meme, vine, pTime, text));
+        holder.more.setOnClickListener(v -> showMoreOptions(holder.more, name, id, userId, pId, meme, vine, pTime, text));
 
 
         //DP
@@ -358,7 +358,7 @@ public class AdapterPost extends RecyclerView.Adapter<AdapterPost.MyHolder> {
             }
         }));
 
-        holder.constraintLayout9.setOnClickListener(new DoubleClick(new DoubleClickListener() {
+        holder.pText.setOnClickListener(new DoubleClick(new DoubleClickListener() {
             @Override
             public void onSingleClick(View view) {
                 if (vine.equals("noVideo")) {
@@ -439,7 +439,7 @@ public class AdapterPost extends RecyclerView.Adapter<AdapterPost.MyHolder> {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 String numOfLikes = String.valueOf((int) snapshot.getChildrenCount());
                 if (numOfLikes.equals("0")) {
-                    holder.likeNo.setText("Like");
+                    holder.likeNo.setText("0");
 
                 } else {
                     holder.likeNo.setText(snapshot.getChildrenCount() + "");
@@ -447,6 +447,7 @@ public class AdapterPost extends RecyclerView.Adapter<AdapterPost.MyHolder> {
 
             }
 
+            //
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
@@ -601,7 +602,6 @@ public class AdapterPost extends RecyclerView.Adapter<AdapterPost.MyHolder> {
     private void showMoreOptions(ImageView more, String name, String id, String userId, String pId, String meme, String vine, String pTime, String text) {
 
         PopupMenu popupMenu = new PopupMenu(context, more, Gravity.END);
-
 
         if (id.equals(userId)) {
             popupMenu.getMenu().add(Menu.NONE, 0, 0, "Delete");
@@ -819,7 +819,7 @@ public class AdapterPost extends RecyclerView.Adapter<AdapterPost.MyHolder> {
         final RelativeLayout ad;
         final ImageView pause;
         final ProgressBar load;
-        final ConstraintLayout constraintLayout9;
+        //        final RelativeLayout constraintLayout9;
         final ConstraintLayout viewlt;
 
 
@@ -846,7 +846,7 @@ public class AdapterPost extends RecyclerView.Adapter<AdapterPost.MyHolder> {
             comment = itemView.findViewById(R.id.relativeLayout6);
             share = itemView.findViewById(R.id.meme_share);
             video_share = itemView.findViewById(R.id.vine_share);
-            constraintLayout9 = itemView.findViewById(R.id.constraintLayout9);
+//            constraintLayout9 = itemView.findViewById(R.id.constraintLayout9);
             MobileAds.initialize(context, initializationStatus -> {
 
             });

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#fff"
-    tools:context=".menu.Policy"
+    tools:context=".adapter.menu.Policy"
     tools:ignore="Overdraw">
 
     <androidx.constraintlayout.widget.ConstraintLayout

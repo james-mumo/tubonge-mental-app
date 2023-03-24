@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><!--suppress ALL -->
+<?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -19,7 +19,32 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/box"
         app:layout_constraintTop_toBottomOf="@+id/box"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="1.0"
+        app:tint="@color/white" />
+
+    <ImageView
+        android:id="@+id/delete"
+        android:layout_width="12dp"
+        android:layout_height="12dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="1dp"
+        android:contentDescription="@string/contentdescription"
+        android:src="@drawable/ic_trash_ctm"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tv"
+        app:layout_constraintTop_toBottomOf="@+id/box"
+        app:tint="@color/white" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/dp"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="7dp"
+        android:src="@drawable/avatar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/box"
@@ -51,6 +76,7 @@
             android:id="@+id/comment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
             android:autoLink="all"
             android:linksClickable="true"
             android:paddingStart="12dp"
@@ -105,53 +131,35 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <ImageView
-        android:id="@+id/delete"
-        android:layout_width="12dp"
-        android:layout_height="12dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="1dp"
-        android:contentDescription="@string/contentdescription"
-        android:src="@drawable/ic_trash_ctm"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tv"
-        app:layout_constraintTop_toBottomOf="@+id/box" />
-
-    <TextView
-        android:id="@+id/textView12"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:text="Just Now"
-        android:textColor="@color/colorPrimary"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/delete"
-        app:layout_constraintTop_toBottomOf="@+id/box"
-        tools:ignore="HardcodedText,SpUsage" />
 
     <TextView
         android:id="@+id/tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="2dp"
+        android:layout_marginTop="4dp"
         android:text="Like"
-        android:textColor="@color/colorPrimary"
-        android:textSize="12sp"
+        android:textColor="?attr/headertextcolor"
+        android:textSize="11sp"
         app:flow_verticalAlign="center"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageView7"
         app:layout_constraintTop_toBottomOf="@+id/box"
         tools:ignore="HardcodedText,SpUsage" />
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/dp"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="3dp"
-        android:layout_marginTop="7dp"
-        android:src="@drawable/avatar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:text="Just Now"
+        android:textColor="?attr/headertextcolor"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/delete"
+        app:layout_constraintTop_toBottomOf="@+id/box"
+        tools:ignore="HardcodedText,SpUsage" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

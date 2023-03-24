@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorAccent"
+    android:orientation="vertical"
+    tools:context=".userEvents.ThoughtsDiary">
+
+    <RelativeLayout
+        android:id="@+id/topAddNoteBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/headercolor"
+        android:orientation="horizontal"
+        android:paddingVertical="10dp">
+
+        <TextView
+            android:id="@+id/addNote"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:fontFamily="@font/bungee"
+            android:paddingHorizontal="10dp"
+            android:text="Add Note"
+            android:textColor="?attr/headertextcolor"
+            android:textSize="12dp" />
+
+        <TextView
+            android:id="@+id/deleteAllNotes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="30dp"
+            android:fontFamily="@font/bungee"
+            android:text="Delete ALl Notes"
+            android:textColor="?attr/headertextcolor"
+            android:textSize="12dp" />
+    </RelativeLayout>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/addNoteCardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="0dp"
+        android:visibility="gone"
+        app:cardCornerRadius="3dp"
+        app:cardElevation="1dp"
+        app:cardMaxElevation="4dp"
+        app:cardUseCompatPadding="true">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?attr/headercolor"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="10dp">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/noteHeaderlayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Note Header"
+                android:textColor="?attr/headertextcolor"
+                android:textColorHint="?attr/headertextcolor"
+                app:placeholderTextColor="@color/white">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/note_header"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/bungee"
+                    android:textColor="?attr/headertextcolor"
+                    android:textColorHint="?attr/headertextcolor"
+                    app:placeholderTextColor="@color/white" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/noteInfoLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/noteHeaderlayout"
+                android:hint="Note"
+                android:textColor="?attr/headertextcolor"
+                android:textColorHint="?attr/headertextcolor">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/note_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/note_header"
+                    android:gravity="top"
+                    android:minLines="2"
+                    android:textColor="?attr/headertextcolor"
+                    android:textColorHint="?attr/headertextcolor" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/submit_button"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:layout_below="@+id/noteInfoLayout"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/search_edittext"
+                android:fontFamily="@font/bold"
+                android:text="Submit"
+                android:textColor="?attr/headertextcolor" />
+
+            <Button
+                android:id="@+id/cancel_button"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:layout_below="@+id/noteInfoLayout"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/search_edittext"
+                android:fontFamily="@font/bold"
+                android:text="Cancel"
+                android:textColor="?attr/headertextcolor" />
+        </RelativeLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+
+    <!-- RecyclerView with two columns -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/note_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="1dp"
+        android:numColumns="2" />
+
+</LinearLayout>
+
+

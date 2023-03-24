@@ -85,4 +85,26 @@
     <string name="neutral">Neutral</string>
     <string name="neutral_emoji">😐</string>
     <string name="the_post_data">the post data</string>
+    <string name="post">Post</string>
+    <string name="events">Events</string>
+    <string name="what_do_you_want_to_work_on">Hello, What do you want to work on?</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="struggling_with_addiction">Struggling with Addiction?</string>
+    <string name="meet_professionals_qualified_professionals_to_help_you">Meet Qualified Professionals To Help You In Every Step of The Way.</string>
+    <string name="title_activity_peer_counselling_page">PeerCounsellingPage</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="suicidal_text">It\'s not okay to feel suicidal, but it\'s okay to ask for help. Please reach out to a mental health professional or call a suicide hotline immediately</string>
+    <string name="thoughts_diary">Diary</string>
+    <string name="offline">Offline</string>
+    <string name="online">Online</string>
+    <string name="how_are_yu_feeling_today">How are you feeling today?</string>
+    <string name="sample_long">Find a quiet and private space to write down your thoughts and feelings, such as in a notebook or journal.\n \n Write freely without judgment or self-editing, allowing your thoughts to flow naturally.</string>
 </resources>

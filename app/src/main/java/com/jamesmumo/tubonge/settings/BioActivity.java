@@ -115,7 +115,7 @@ public class BioActivity extends AppCompatActivity {
         hashMap.put("bio", name);
         //noinspection unchecked
         mDatabase.updateChildren(hashMap);
-        StyleableToast st = new StyleableToast(Objects.requireNonNull(BioActivity.this), "Bio updated", Toast.LENGTH_LONG);
+        StyleableToast st = new StyleableToast((BioActivity.this), "Bio updated", Toast.LENGTH_LONG);
         st.setBackgroundColor(Color.parseColor("#001E55"));
         st.setTextColor(Color.WHITE);
         st.setIcon(R.drawable.ic_check_wt);

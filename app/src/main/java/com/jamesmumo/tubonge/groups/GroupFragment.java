@@ -269,20 +269,10 @@
 //}
 
 
-
-
-
 package com.jamesmumo.tubonge.groups;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -290,6 +280,11 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -300,12 +295,12 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.jamesmumo.tubonge.Adpref;
+import com.jamesmumo.tubonge.R;
 import com.jamesmumo.tubonge.adapter.AdapterChatListGroups;
 import com.jamesmumo.tubonge.adapter.AdapterGroups;
-import com.jamesmumo.tubonge.Adpref;
 import com.jamesmumo.tubonge.model.ModelChatListGroups;
 import com.jamesmumo.tubonge.model.ModelGroups;
-import com.jamesmumo.tubonge.R;
 import com.jamesmumo.tubonge.search.Search;
 
 import java.util.ArrayList;
@@ -314,10 +309,10 @@ import java.util.Objects;
 
 public class GroupFragment extends Fragment {
 
-    ImageView add,imageView3;
-    RecyclerView posts_rv,groups_rv;
-    TextView post,groups;
-    RelativeLayout postly,groupsly;
+    ImageView add, imageView3;
+    RecyclerView posts_rv, groups_rv;
+    TextView post, groups;
+    RelativeLayout postly, groupsly;
     ProgressBar pg;
     //Groups
     AdapterGroups adapterGroups;
@@ -352,7 +347,7 @@ public class GroupFragment extends Fragment {
 
         Adpref adpref;
         adpref = new Adpref(Objects.requireNonNull(getContext()));
-        if (adpref.loadAdsModeState()){
+        if (adpref.loadAdsModeState()) {
             mAdView.setVisibility(View.VISIBLE);
 
         }
@@ -371,17 +366,16 @@ public class GroupFragment extends Fragment {
         pg.setVisibility(View.VISIBLE);
 
 
-
         groupsly.setOnClickListener(v -> {
-            groups.setTextColor(Color.parseColor("#0047ab"));
-            post.setTextColor(Color.parseColor("#161F3D"));
+//            groups.setTextColor(Color.parseColor("#0047ab"));
+//            post.setTextColor(Color.parseColor("#161F3D"));
             posts_rv.setVisibility(View.GONE);
             groups_rv.setVisibility(View.VISIBLE);
         });
 
         postly.setOnClickListener(v -> {
-            groups.setTextColor(Color.parseColor("#161F3D"));
-            post.setTextColor(Color.parseColor("#0047ab"));
+//            groups.setTextColor(Color.parseColor("#161F3D"));
+//            post.setTextColor(Color.parseColor("#0047ab"));
             posts_rv.setVisibility(View.VISIBLE);
             groups_rv.setVisibility(View.GONE);
         });
@@ -409,8 +403,8 @@ public class GroupFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 modelChatListGroupsList.clear();
-                for (DataSnapshot ds: dataSnapshot.getChildren()){
-                    if (ds.child("Participants").child(userId).exists()){
+                for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                    if (ds.child("Participants").child(userId).exists()) {
                         ModelChatListGroups modelChatListGroups = ds.getValue(ModelChatListGroups.class);
                         modelChatListGroupsList.add(modelChatListGroups);
                     }
@@ -434,8 +428,8 @@ public class GroupFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 modelGroupsList.clear();
-                for (DataSnapshot ds: dataSnapshot.getChildren()){
-                    if (ds.child("Participants").child(userId).exists()){
+                for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                    if (ds.child("Participants").child(userId).exists()) {
                         ModelGroups modelGroups = ds.getValue(ModelGroups.class);
                         modelGroupsList.add(modelGroups);
                     }

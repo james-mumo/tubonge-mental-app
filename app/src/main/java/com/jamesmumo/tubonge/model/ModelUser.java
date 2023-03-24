@@ -2,12 +2,14 @@ package com.jamesmumo.tubonge.model;
 
 @SuppressWarnings({"ALL", "unused"})
 public class ModelUser {
-    String name, email, username, bio, location, link, photo, phone, id,status,typingTo;
+    String name, email, username, bio, location, link, photo, phone, id, status, typingTo;
+    int isProfessionnal;
     boolean isBlocked = false;
+
     public ModelUser() {
     }
 
-    public ModelUser(String name, String email, String username, String bio, String location, String link, String photo, String phone, String id, String status, String typingTo, boolean isBlocked) {
+    public ModelUser(String name, String email, String username, String bio, String location, String link, String photo, String phone, String id, String status, String typingTo, int isProfessionnal, boolean isBlocked) {
         this.name = name;
         this.email = email;
         this.username = username;
@@ -19,7 +21,16 @@ public class ModelUser {
         this.id = id;
         this.status = status;
         this.typingTo = typingTo;
+        this.isProfessionnal = isProfessionnal;
         this.isBlocked = isBlocked;
+    }
+
+    public int getIsProfessionnal() {
+        return isProfessionnal;
+    }
+
+    public void setIsProfessionnal(int isProfessionnal) {
+        this.isProfessionnal = isProfessionnal;
     }
 
     public String getName() {

@@ -67,341 +67,62 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/randomquotesly"
+    <RelativeLayout
+        android:id="@+id/content"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="4dp"
-        android:background="@drawable/blue_border"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="0.35"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/header"
-        app:layout_constraintWidth_percent="0.95">
-
-
-        <TextView
-            android:id="@+id/tv_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_margin="16dp"
-            android:layout_marginTop="16dp"
-            android:clickable="true"
-            android:focusable="true"
-            android:selectAllOnFocus="true"
-            android:text="@string/quote_string"
-            android:textAlignment="inherit"
-            android:textColor="?attr/textcolor"
-            android:textIsSelectable="true"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab_newQuote"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="4dp"
-            android:focusable="true"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.952"
-            app:layout_constraintStart_toStartOf="parent"
-            app:rippleColor="#FFFFFF"
-            app:srcCompat="@drawable/next" />
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/feelingGridLayout"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="4dp"
+        android:background="@color/colorAccent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="0.58"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/randomquotesly"
-        app:layout_constraintVertical_bias="0.0"
-        app:layout_constraintWidth_percent="0.95">
+        app:layout_constraintTop_toBottomOf="@id/header">
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/latelyfeelingTextView"
+        <LinearLayout
+            android:id="@+id/usernameLinLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:background="@drawable/tag_header_rounded_corners"
-            android:text="@string/how_have_you_been_feeling_lately"
-            android:textAlignment="center"
-            android:textColor="?attr/textcolor"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:orientation="vertical">
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/latelyfeelingTextView">
-
-            <GridLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="0dp"
-                android:layout_gravity="start"
-                android:background="@drawable/thin_blue_border"
-                android:columnCount="3">
+                android:layout_marginTop="3dp"
+                android:orientation="horizontal">
 
-                <LinearLayout
-                    android:id="@+id/worried_emoji"
-                    android:layout_width="0dp"
-                    android:layout_height="120dp"
-                    android:layout_columnWeight="1"
-                    android:layout_gravity="fill_horizontal"
-                    android:layout_marginTop="0dp"
-                    android:background="@drawable/emoji_background"
-                    android:orientation="vertical">
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:background="@drawable/blue_border_bg"
+                    android:src="@drawable/avatar" />
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="bottom"
-                        android:text="@string/worried_emoji"
-                        android:textAlignment="center"
-                        android:textColor="?attr/textcolor"
-                        android:textSize="70sp"
-                        android:textStyle="bold"
-                        android:translationZ="10dp"
-                        tools:ignore="RtlCompat" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:background="@drawable/grid_tabs_hello_bg"
+                    android:fontFamily="@font/bungee"
+                    android:gravity="center_vertical"
+                    android:paddingEnd="18dp"
+                    android:text="@string/what_do_you_want_to_work_on"
+                    android:textColor="?attr/headertextcolor"
+                    android:textSize="9sp"
+                    android:textStyle="bold" />
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="bottom"
-                        android:text="@string/worried"
-                        android:textAlignment="center"
-                        android:textColor="?attr/headertextcolor"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
-                        android:translationZ="10dp"
-                        tools:ignore="RtlCompat" />
+            </LinearLayout>
 
 
-                </LinearLayout>
+        </LinearLayout>
 
-                <LinearLayout
-                    android:id="@+id/happy_emoji"
-                    android:layout_width="0dp"
-                    android:layout_height="120dp"
-                    android:layout_columnWeight="1"
-                    android:layout_gravity="fill_horizontal"
-                    android:layout_marginTop="0dp"
-                    android:background="@drawable/emoji_background"
-                    android:orientation="vertical">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/gridRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/usernameLinLayout"
+            android:layout_marginTop="5dp">
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="bottom"
-                        android:text="@string/happy_emoji"
-                        android:textAlignment="center"
-                        android:textColor="?attr/textcolor"
-                        android:textSize="70sp"
-                        android:textStyle="bold"
-                        android:translationZ="10dp"
-                        tools:ignore="RtlCompat" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="bottom"
-                        android:text="@string/thankful"
-                        android:textAlignment="center"
-                        android:textColor="?attr/headertextcolor"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
-                        android:translationZ="10dp"
-                        tools:ignore="RtlCompat" />
+        </androidx.recyclerview.widget.RecyclerView>
 
 
-                </LinearLayout>
+    </RelativeLayout>
 
-                <LinearLayout
-                    android:id="@+id/sad_emoji"
-                    android:layout_width="0dp"
-                    android:layout_height="120dp"
-                    android:layout_columnWeight="1"
-                    android:layout_gravity="fill_horizontal"
-                    android:layout_marginTop="0dp"
-                    android:background="@drawable/emoji_background"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="bottom"
-                        android:text="@string/sad_emoji"
-                        android:textAlignment="center"
-                        android:textColor="?attr/textcolor"
-                        android:textSize="70sp"
-                        android:textStyle="bold"
-                        android:translationZ="10dp"
-                        tools:ignore="RtlCompat" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="bottom"
-                        android:text="@string/sad"
-                        android:textAlignment="center"
-                        android:textColor="?attr/headertextcolor"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
-                        android:translationZ="10dp"
-                        tools:ignore="RtlCompat" />
-
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/terribleBtn"
-                    android:layout_width="0dp"
-                    android:layout_height="120dp"
-                    android:layout_columnWeight="1"
-                    android:layout_gravity="fill_horizontal"
-                    android:layout_marginTop="0dp"
-                    android:background="@drawable/emoji_background"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="bottom"
-                        android:text="@string/terrible_emoji"
-                        android:textAlignment="center"
-                        android:textColor="?attr/textcolor"
-                        android:textSize="70sp"
-                        android:textStyle="bold"
-                        android:translationZ="10dp"
-                        tools:ignore="RtlCompat" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="bottom"
-                        android:text="@string/terrible"
-                        android:textAlignment="center"
-                        android:textColor="?attr/headertextcolor"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
-                        android:translationZ="10dp"
-                        tools:ignore="RtlCompat" />
-
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/neutral_emoji"
-                    android:layout_width="0dp"
-                    android:layout_height="120dp"
-                    android:layout_columnWeight="1"
-                    android:layout_gravity="fill_horizontal"
-                    android:layout_marginTop="0dp"
-                    android:background="@drawable/emoji_background"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="bottom"
-                        android:text="@string/neutral_emoji"
-                        android:textAlignment="center"
-                        android:textColor="?attr/textcolor"
-                        android:textSize="70sp"
-                        android:textStyle="bold"
-                        android:translationZ="10dp"
-                        tools:ignore="RtlCompat" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="bottom"
-                        android:text="@string/neutral"
-                        android:textAlignment="center"
-                        android:textColor="?attr/headertextcolor"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
-                        android:translationZ="10dp"
-                        tools:ignore="RtlCompat" />
-
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/otherBtn"
-                    android:layout_width="0dp"
-                    android:layout_height="120dp"
-                    android:layout_columnWeight="1"
-                    android:layout_gravity="fill_horizontal"
-                    android:layout_marginTop="0dp"
-                    android:background="@drawable/emoji_background"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="bottom"
-                        android:text="@string/other_emoji"
-                        android:textAlignment="center"
-                        android:textColor="?attr/textcolor"
-                        android:textSize="70sp"
-                        android:textStyle="bold"
-                        android:translationZ="10dp"
-                        tools:ignore="RtlCompat" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="bottom"
-                        android:text="@string/other"
-                        android:textAlignment="center"
-                        android:textColor="?attr/headertextcolor"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
-                        android:translationZ="10dp"
-                        tools:ignore="RtlCompat" />
-
-                </LinearLayout>
-
-            </GridLayout>
-        </ScrollView>
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="0dp"
-        android:layout_height="20dp"
-        android:layout_marginBottom="28dp"
-        android:background="@drawable/tag_header_rounded_corners"
-        android:text="@string/button_continue"
-        android:textColor="?attr/textcolor"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintWidth_percent="0.85" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

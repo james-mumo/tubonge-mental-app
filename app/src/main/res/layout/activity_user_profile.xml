@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/container"
-    android:background="?attr/backgroundcolor"
+    android:background="@color/indicator_def"
     tools:context=".user.UserProfile"
     tools:ignore="Overdraw">
 
@@ -99,7 +99,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="?attr/layoutcolor"
-                        android:visibility="gone">
+                        android:visibility="visible">
 
                         <ImageView
                             android:id="@+id/bio_img"
@@ -222,8 +222,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:visibility="invisible"
-                    android:background="?attr/layoutcolor"
+                    android:visibility="visible"
+                    android:background="?attr/headercolor"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
@@ -235,7 +235,8 @@
                         android:layout_marginTop="10dp"
                         android:fontFamily="@font/bold"
                         android:text="Name"
-                        android:textColor="?attr/textcolor"
+                        android:textColor="?attr/headertextcolor"
+                        android:textAllCaps="true"
                         android:textSize="22dp"
                         tools:ignore="HardcodedText,SpUsage"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -249,7 +250,7 @@
                         android:fontFamily="@font/med"
                         android:text="username"
                         tools:ignore="HardcodedText,SpUsage"
-                        android:textColor="?attr/textcolor"
+                        android:textColor="?attr/headertextcolor"
                         android:textSize="18dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -290,7 +291,7 @@
                                     android:maxLines="1"
                                     android:text="0"
                                     tools:ignore="HardcodedText,SpUsage"
-                                    android:textColor="?attr/textcolor"
+                                    android:textColor="?attr/headertextcolor"
                                     android:textSize="14dp" />
 
                                 <TextView
@@ -301,7 +302,7 @@
                                     android:fontFamily="@font/med"
                                     tools:ignore="HardcodedText,SpUsage"
                                     android:text="Post"
-                                    android:textColor="?attr/textcolor"
+                                    android:textColor="?attr/headertextcolor"
                                     android:textSize="14dp" />
                             </RelativeLayout>
                         </RelativeLayout>
@@ -330,7 +331,7 @@
                                     android:maxLines="1"
                                     android:text="0"
                                     tools:ignore="HardcodedText,SpUsage"
-                                    android:textColor="?attr/textcolor"
+                                    android:textColor="?attr/headertextcolor"
                                     android:textSize="14dp" />
 
                                 <TextView
@@ -341,7 +342,7 @@
                                     android:fontFamily="@font/med"
                                     android:text="Followers"
                                     tools:ignore="HardcodedText,SpUsage"
-                                    android:textColor="?attr/textcolor"
+                                    android:textColor="?attr/headertextcolor"
                                     android:textSize="14dp" />
                             </RelativeLayout>
 
@@ -372,7 +373,7 @@
                                     android:maxLines="1"
                                     android:text="0"
                                     tools:ignore="HardcodedText,SpUsage"
-                                    android:textColor="?textcolor"
+                                    android:textColor="?attr/headertextcolor"
                                     android:textSize="14dp" />
 
                                 <TextView
@@ -383,7 +384,7 @@
                                     android:fontFamily="@font/med"
                                     tools:ignore="HardcodedText,SpUsage"
                                     android:text="Following"
-                                    android:textColor="?textcolor"
+                                    android:textColor="?attr/headertextcolor"
                                     android:textSize="14dp" />
                             </RelativeLayout>
                         </RelativeLayout>
@@ -418,7 +419,7 @@
                             android:layout_height="35dp"
                             android:layout_marginStart="16dp"
                             android:layout_marginEnd="16dp"
-                            android:background="@drawable/blue_btn_radius"
+                            android:background="@color/colorAccent"
                             android:fontFamily="@font/bold"
                             android:text="Follow"
                             android:textSize="16dp"
@@ -459,11 +460,11 @@
                             android:textSize="16dp"
                             tools:ignore="HardcodedText,SpUsage"
                             android:layout_marginEnd="16dp"
-                            android:background="@drawable/grey_button_radius"
+                            android:background="@color/colorAccent"
                             android:fontFamily="@font/bold"
                             android:text="Message"
                             android:textAllCaps="false"
-                            android:textColor="#161F3D"
+                            android:textColor="#fff"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="@+id/guideline2"

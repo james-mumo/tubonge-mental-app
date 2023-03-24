@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/headercolor"
+    android:orientation="vertical"
+    tools:context=".userEvents.WhatMakingYouFeel">
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/enterReasonBox"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="33dp"
+        android:translationZ="1000dp"
+        android:visibility="gone"
+        app:cardBackgroundColor="@color/colorAccent"
+        app:cardCornerRadius="6dp"
+        app:cardElevation="4dp"
+        app:cardMaxElevation="4dp"
+        app:cardUseCompatPadding="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter suggestion Here"
+                android:paddingVertical="20dp"
+                android:textColor="?attr/headertextcolor"
+                android:textColorHint="?attr/headertextcolor"
+                app:hintTextColor="?attr/headertextcolor">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/suggestionBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="10dp"
+                    android:hint="Enter suggestion Here"
+                    android:textColor="?attr/headertextcolor"
+                    android:textColorHint="?attr/headertextcolor"
+                    app:hintTextColor="?attr/headertextcolor" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/textView17"
+                android:layout_width="139dp"
+                android:layout_height="49dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="16dp"
+                android:background="?attr/textcolor"
+                android:fontFamily="@font/bungee"
+                android:onClick="submitReason"
+                android:paddingHorizontal="15dp"
+                android:rotation="3"
+                android:text="Submit"
+                android:textColor="?attr/headertextcolor"
+                android:textSize="19dp"
+                android:translationZ="333dp"
+
+                />
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+
+    <ImageView
+        android:id="@+id/imageView39"
+        android:layout_width="107dp"
+        android:layout_height="97dp"
+        android:src="@drawable/geometric"
+        app:layout_constraintBottom_toTopOf="@+id/itsOkayFeelingThat"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/myFeeling" />
+
+    <TextView
+        android:id="@+id/myFeeling"
+        android:layout_width="340dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/bungee"
+        android:paddingHorizontal="10dp"
+        android:rotation="-3"
+        android:text="Hey James, feeling Depressed is okay."
+        android:textColor="?attr/headertextcolor"
+        android:textSize="19dp"
+        android:translationZ="100dp"
+        app:layout_constraintBottom_toTopOf="@+id/itsOkayFeelingThat"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.225"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.423" />
+
+    <TextView
+        android:id="@+id/itsOkayFeelingThat"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="48dp"
+        android:fontFamily="@font/bungee"
+        android:paddingHorizontal="10dp"
+        android:rotation="0"
+        android:text="It's okay to feel whatever you're feeling. Remember to take care of yourself and reach out for support if needed"
+        android:textColor="?attr/headertextcolor"
+        android:textSize="15dp"
+        android:translationZ="100dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView18"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="44dp"
+        android:fontFamily="@font/bungee"
+        android:paddingHorizontal="10dp"
+        android:text="Get Access To Help"
+        android:textColor="?attr/headertextcolor"
+        android:textSize="12dp"
+        android:translationZ="100dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView19"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/textView19"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:fontFamily="@font/bungee"
+        android:paddingHorizontal="10dp"
+        android:text="Get Assisted every step of the way"
+        android:textColor="?attr/headertextcolor"
+        android:textSize="12dp"
+        android:translationZ="100dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView20"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView20"
+        android:layout_width="181dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:background="?attr/textcolor"
+        android:fontFamily="@font/bungee"
+        android:paddingHorizontal="10dp"
+        android:rotation="2"
+        android:text="What's Making You Feel That Way?"
+        android:textColor="?attr/headertextcolor"
+        android:textSize="12dp"
+        android:translationZ="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imageView42"
+        app:layout_constraintHorizontal_bias="0.512"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView37"
+        android:layout_width="116dp"
+        android:layout_height="91dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintBottom_toTopOf="@+id/myFeeling"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.022"
+        app:srcCompat="@drawable/swearing" />
+
+    <ImageView
+        android:id="@+id/imageView38"
+        android:layout_width="122dp"
+        android:layout_height="67dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintBottom_toTopOf="@+id/myFeeling"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.947"
+        app:layout_constraintStart_toEndOf="@+id/imageView37"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/abs2" />
+
+    <ImageView
+        android:id="@+id/imageView40"
+        android:layout_width="61dp"
+        android:layout_height="63dp"
+        app:layout_constraintBottom_toTopOf="@+id/itsOkayFeelingThat"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.111"
+        app:layout_constraintStart_toEndOf="@+id/imageView39"
+        app:layout_constraintTop_toBottomOf="@+id/myFeeling"
+        app:layout_constraintVertical_bias="0.152"
+        app:srcCompat="@drawable/graphegg" />
+
+    <ImageView
+        android:id="@+id/imageView41"
+        android:layout_width="123dp"
+        android:layout_height="84dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView19"
+        app:layout_constraintEnd_toStartOf="@+id/textView18"
+        app:layout_constraintHorizontal_bias="0.231"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/itsOkayFeelingThat"
+        app:srcCompat="@drawable/doctor" />
+
+    <ImageView
+        android:id="@+id/imageView42"
+        android:layout_width="107dp"
+        android:layout_height="134dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView18"
+        app:srcCompat="@drawable/diary" />
+
+    <ImageView
+        android:id="@+id/imageView43"
+        android:layout_width="188dp"
+        android:layout_height="129dp"
+        android:layout_marginBottom="116dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView18"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.677"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/myFeeling"
+        app:srcCompat="@drawable/mad" />
+
+    <ImageView
+        android:id="@+id/imageView44"
+        android:layout_width="157dp"
+        android:layout_height="165dp"
+        android:layout_marginBottom="48dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.559"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/itsOkayFeelingThat"
+        app:srcCompat="@drawable/graphgreen" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

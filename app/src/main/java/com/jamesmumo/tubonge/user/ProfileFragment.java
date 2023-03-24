@@ -25,7 +25,7 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.jamesmumo.tubonge.R;
 import com.jamesmumo.tubonge.adapter.AdapterPost;
-import com.jamesmumo.tubonge.menu.Menu;
+import com.jamesmumo.tubonge.adapter.menu.Menu;
 import com.jamesmumo.tubonge.model.ModelPost;
 import com.jamesmumo.tubonge.post.Post;
 import com.jamesmumo.tubonge.settings.EditProfile;
@@ -52,7 +52,8 @@ public class ProfileFragment extends Fragment {
 
     //Theme
     RelativeLayout containers,edittext_bg;
-    ConstraintLayout header,constraintLayout,post;
+    ConstraintLayout header,post;
+    RelativeLayout constraintLayout;
     ProgressBar pb;
     RelativeLayout bio_layout, web_layout,location_layout;
     TextView  bio, link, location,post_meme;

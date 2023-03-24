@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?attr/backgroundcolor"
+    android:background="@color/colorAccent"
     tools:context=".post.PostDetails"
     tools:ignore="Overdraw">
 
@@ -21,11 +21,11 @@
         <ImageView
             android:id="@+id/imageView3"
             android:layout_width="32dp"
-            android:contentDescription="@string/contentdescription"
             android:layout_height="32dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
+            android:contentDescription="@string/contentdescription"
             android:src="@drawable/ic_cancel"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -35,11 +35,11 @@
         <ImageView
             android:id="@+id/imageView4"
             android:layout_width="32dp"
-            android:contentDescription="@string/contentdescription"
             android:layout_height="32dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
+            android:contentDescription="@string/contentdescription"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -53,12 +53,12 @@
             android:fontFamily="@font/black"
             android:text="Post"
             android:textColor="?attr/headertextcolor"
-            tools:ignore="HardcodedText,SpUsage"
             android:textSize="24dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/imageView4"
             app:layout_constraintStart_toEndOf="@+id/imageView3"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="HardcodedText,SpUsage" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -84,21 +84,22 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:background="?attr/layoutcolor">
+                    android:background="?attr/headercolor">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/viewlt"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
+                        android:visibility="gone"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/constraintLayout9">
 
                         <ProgressBar
+                            android:id="@+id/load"
                             android:layout_width="25dp"
                             android:layout_height="25dp"
-                            android:id="@+id/load"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
@@ -115,8 +116,8 @@
                         <ImageView
                             android:id="@+id/imageView2"
                             android:layout_width="0dp"
-                            android:contentDescription="@string/contentdescription"
                             android:layout_height="275dp"
+                            android:contentDescription="@string/contentdescription"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -132,25 +133,24 @@
                             app:layout_constraintTop_toTopOf="parent">
 
                             <ImageView
-                                android:src="@drawable/ic_eye"
-                                android:layout_width="25dp"
                                 android:id="@+id/eye"
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
                                 android:contentDescription="@string/contentdescription"
-                                android:layout_height="25dp" />
+                                android:src="@drawable/ic_eye" />
 
                             <TextView
                                 android:id="@+id/views"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
                                 android:layout_centerVertical="true"
-                                android:fontFamily="@font/med"
-                                tools:ignore="SpUsage"
                                 android:layout_marginStart="7dp"
                                 android:layout_toEndOf="@+id/eye"
-                                android:textSize="15dp"
+                                android:fontFamily="@font/med"
                                 android:textColor="#fff"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
+                                android:textSize="15dp"
+                                tools:ignore="SpUsage" />
                         </RelativeLayout>
-
 
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -160,19 +160,22 @@
                         android:id="@+id/constraintLayout7"
                         android:layout_width="match_parent"
                         android:layout_height="60dp"
+                        android:background="?attr/headercolor"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent">
 
-                        <ImageView
-                            android:id="@+id/more"
-                            android:layout_width="28dp"
-                            android:layout_height="28dp"
-                            android:layout_marginEnd="16dp"
-                            android:contentDescription="@string/contentdescription"
-                            android:src="@drawable/ic_more_post"
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/circleImageView3"
+                            android:layout_width="55dp"
+                            android:layout_height="55dp"
+                            android:layout_marginStart="12dp"
+                            android:layout_marginTop="12dp"
+                            android:layout_marginBottom="12dp"
+                            android:src="@drawable/avatar"
                             app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <RelativeLayout
@@ -192,10 +195,20 @@
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentStart="true"
                                 android:fontFamily="@font/bold"
-                                tools:ignore="HardcodedText,SpUsage"
                                 android:text="James"
-                                android:textColor="?attr/textcolor"
-                                android:textSize="14dp" />
+                                android:textColor="?attr/headertextcolor"
+                                android:textSize="14dp"
+                                tools:ignore="HardcodedText,SpUsage" />
+
+
+                            <ImageView
+                                android:id="@+id/verifiedMark"
+                                android:layout_width="23dp"
+                                android:layout_height="23dp"
+                                android:alpha=".7"
+                                android:layout_toEndOf="@+id/name"
+                                android:paddingHorizontal="3dp"
+                                android:src="@drawable/ic_baseline_verified_24" />
 
 
                             <LinearLayout
@@ -213,7 +226,7 @@
                                     android:ellipsize="end"
                                     android:fontFamily="@font/med"
                                     android:text="12m"
-                                    android:textColor="?attr/timeagotextcolor"
+                                    android:textColor="?attr/headertextcolor"
                                     android:textSize="11dp"
                                     tools:ignore="HardcodedText,SpUsage" />
 
@@ -222,28 +235,50 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_alignParentStart="true"
-                                    android:layout_marginEnd="8dp"
+                                    android:layout_marginEnd="1dp"
                                     android:ellipsize="end"
                                     android:fontFamily="@font/med"
                                     android:text="Supportive"
-                                    android:textColor="?attr/timeagotextcolor"
+                                    android:textColor="?attr/headertextcolor"
                                     android:textSize="11dp"
                                     tools:ignore="HardcodedText,SpUsage" />
 
+                                <ImageView
+                                    android:id="@+id/currentFeelingEmoji"
+                                    android:layout_width="19dp"
+                                    android:layout_height="19dp"
+                                    android:layout_toEndOf="@+id/currentFeeling"
+                                    android:paddingHorizontal="3dp"
+                                    android:src="@drawable/ic_baseline_emoji_smile" />
+
                             </LinearLayout>
                         </RelativeLayout>
-
-                        <de.hdodenhof.circleimageview.CircleImageView
-                            android:id="@+id/circleImageView3"
-                            android:layout_width="35dp"
-                            android:layout_height="35dp"
-                            android:layout_marginStart="12dp"
-                            android:layout_marginTop="12dp"
-                            android:layout_marginBottom="12dp"
-                            android:src="@drawable/avatar"
+                        <!--                        <TextView-->
+                        <!--                            android:id="@+id/followBtn"-->
+                        <!--                            android:layout_width="wrap_content"-->
+                        <!--                            android:layout_height="wrap_content"-->
+                        <!--                            android:layout_marginTop="1dp"-->
+                        <!--                            android:background="?attr/textcolor"-->
+                        <!--                            android:padding="1dp"-->
+                        <!--                            android:layout_marginStart="16dp"-->
+                        <!--                            android:text="@string/follow"-->
+                        <!--                            android:textColor="?attr/headertextcolor"-->
+                        <!--                            app:layout_constraintBottom_toBottomOf="parent"-->
+                        <!--                            app:layout_constraintStart_toStartOf="parent"-->
+                        <!--                            app:layout_constraintEnd_toStartOf="@+id/postItemRel"-->
+                        <!--                            app:layout_constraintTop_toBottomOf="@id/circleImageView3" />-->
+                        <ImageView
+                            android:id="@+id/more"
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:layout_marginEnd="16dp"
+                            android:contentDescription="@string/contentdescription"
+                            android:src="@drawable/ic_more_post"
                             app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:tint="@color/white" />
+
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -262,18 +297,18 @@
                             android:layout_marginStart="20dp"
                             android:layout_marginTop="8dp"
                             android:layout_marginEnd="16dp"
-                            android:fontFamily="@font/bold"
-                            android:text=""
                             android:autoLink="all"
+                            android:fontFamily="@font/bold"
                             android:linksClickable="true"
-                            android:textColorLink="#00BCD4"
-                            android:textColor="?attr/textcolor"
-                            tools:ignore="SpUsage"
+                            android:text=""
+                            android:textColor="?attr/headertextcolor"
+                            android:textColorLink="?attr/headertextcolor"
                             android:textSize="12dp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:ignore="SpUsage" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <androidx.constraintlayout.widget.ConstraintLayout
@@ -303,9 +338,10 @@
                                     android:id="@+id/like_img"
                                     android:layout_width="25dp"
                                     android:layout_height="25dp"
-                                    android:contentDescription="@string/contentdescription"
                                     android:layout_centerVertical="true"
-                                    android:src="@drawable/ic_heart" />
+                                    android:contentDescription="@string/contentdescription"
+                                    android:src="@drawable/ic_heart"
+                                    app:tint="@color/white" />
 
                                 <TextView
                                     android:id="@+id/likeNo"
@@ -316,9 +352,9 @@
                                     android:layout_toEndOf="@+id/like_img"
                                     android:fontFamily="@font/bold"
                                     android:text="Like"
-                                    tools:ignore="HardcodedText,SpUsage"
-                                    android:textColor="?attr/textcolor"
-                                    android:textSize="16dp" />
+                                    android:textColor="?attr/headertextcolor"
+                                    android:textSize="16dp"
+                                    tools:ignore="HardcodedText,SpUsage" />
                             </RelativeLayout>
                         </RelativeLayout>
 
@@ -331,61 +367,62 @@
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="parent">
 
-                        <RelativeLayout
-                            android:id="@+id/meme_share"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerInParent="true">
-
-                            <ImageView
-                                android:id="@+id/share_img"
-                                android:layout_width="25dp"
-                                android:layout_height="25dp"
-                                android:layout_centerVertical="true"
-                                android:contentDescription="@string/contentdescription"
-                                android:src="@drawable/ic_share" />
-
-                            <TextView
+                            <RelativeLayout
+                                android:id="@+id/meme_share"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_centerVertical="true"
-                                android:layout_marginStart="5dp"
-                                android:layout_toEndOf="@+id/share_img"
-                                android:fontFamily="@font/bold"
-                                android:text="Share"
-                                android:textColor="?attr/textcolor"
-                                tools:ignore="HardcodedText,SpUsage"
-                                android:textSize="16dp" />
-                        </RelativeLayout>
+                                android:layout_centerInParent="true">
 
-                        <RelativeLayout
-                            android:visibility="gone"
-                            android:id="@+id/vine_share"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerInParent="true">
+                                <ImageView
+                                    android:id="@+id/share_img"
+                                    android:layout_width="25dp"
+                                    android:layout_height="25dp"
+                                    android:layout_centerVertical="true"
+                                    android:contentDescription="@string/contentdescription"
+                                    android:src="@drawable/ic_share"
+                                    app:tint="@color/white" />
 
-                            <ImageView
-                                android:id="@+id/vine_img"
-                                android:layout_width="25dp"
-                                android:layout_height="25dp"
-                                android:contentDescription="@string/contentdescription"
-                                android:layout_centerVertical="true"
-                                android:src="@drawable/ic_share" />
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerVertical="true"
+                                    android:layout_marginStart="5dp"
+                                    android:layout_toEndOf="@+id/share_img"
+                                    android:fontFamily="@font/bold"
+                                    android:text="Share"
+                                    android:textColor="?attr/headertextcolor"
+                                    android:textSize="16dp"
+                                    tools:ignore="HardcodedText,SpUsage" />
+                            </RelativeLayout>
 
-                            <TextView
+                            <RelativeLayout
+                                android:id="@+id/vine_share"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_centerVertical="true"
-                                android:layout_marginStart="5dp"
-                                android:layout_toEndOf="@+id/vine_img"
-                                android:fontFamily="@font/bold"
-                                android:text="Share"
-                                tools:ignore="HardcodedText,SpUsage"
-                                android:textColor="?attr/textcolor"
-                                android:textSize="16dp" />
+                                android:layout_centerInParent="true"
+                                android:visibility="gone">
 
-                        </RelativeLayout>
+                                <ImageView
+                                    android:id="@+id/vine_img"
+                                    android:layout_width="25dp"
+                                    android:layout_height="25dp"
+                                    android:layout_centerVertical="true"
+                                    android:contentDescription="@string/contentdescription"
+                                    android:src="@drawable/ic_share" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerVertical="true"
+                                    android:layout_marginStart="5dp"
+                                    android:layout_toEndOf="@+id/vine_img"
+                                    android:fontFamily="@font/bold"
+                                    android:text="Share"
+                                    android:textColor="?attr/textcolor"
+                                    android:textSize="16dp"
+                                    tools:ignore="HardcodedText,SpUsage" />
+
+                            </RelativeLayout>
                         </RelativeLayout>
 
                         <RelativeLayout
@@ -407,9 +444,10 @@
                                     android:id="@+id/comment_img"
                                     android:layout_width="25dp"
                                     android:layout_height="25dp"
-                                    android:contentDescription="@string/contentdescription"
                                     android:layout_centerVertical="true"
-                                    android:src="@drawable/ic_comment" />
+                                    android:contentDescription="@string/contentdescription"
+                                    android:src="@drawable/ic_comment"
+                                    app:tint="@color/white" />
 
                                 <TextView
                                     android:id="@+id/commentNo"
@@ -420,9 +458,9 @@
                                     android:layout_toEndOf="@+id/comment_img"
                                     android:fontFamily="@font/bold"
                                     android:text="Comment"
-                                    tools:ignore="HardcodedText,SpUsage"
-                                    android:textColor="?attr/textcolor"
-                                    android:textSize="16dp" />
+                                    android:textColor="?attr/headertextcolor"
+                                    android:textSize="16dp"
+                                    tools:ignore="HardcodedText,SpUsage" />
                             </RelativeLayout>
 
                         </RelativeLayout>
@@ -468,26 +506,26 @@
             android:background="#0000"
             android:fontFamily="@font/med"
             android:hint="Comment"
+            android:importantForAutofill="no"
             android:inputType="textCapSentences|textMultiLine"
             android:maxHeight="100dp"
             android:textColor="?attr/textcolor"
             android:textColorHint="?attr/textcolor"
             android:textSize="20dp"
-            tools:ignore="HardcodedText,SpUsage"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/imageView10"
             app:layout_constraintStart_toEndOf="@+id/imageView11"
             app:layout_constraintTop_toTopOf="parent"
-            android:importantForAutofill="no" />
+            tools:ignore="HardcodedText,SpUsage" />
 
         <ImageView
             android:id="@+id/imageView10"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginTop="10dp"
-            android:contentDescription="@string/contentdescription"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="10dp"
+            android:contentDescription="@string/contentdescription"
             android:src="@drawable/ic_sender"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -499,8 +537,8 @@
             android:layout_height="30dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="10dp"
-            android:contentDescription="@string/contentdescription"
             android:layout_marginBottom="10dp"
+            android:contentDescription="@string/contentdescription"
             android:src="@drawable/ic_plus"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"

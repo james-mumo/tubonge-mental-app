@@ -1,10 +1,5 @@
 package com.jamesmumo.tubonge.search;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
@@ -19,6 +14,11 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -27,14 +27,14 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.jamesmumo.tubonge.R;
+import com.jamesmumo.tubonge.SharedPref;
 import com.jamesmumo.tubonge.adapter.AdapterGroups;
 import com.jamesmumo.tubonge.adapter.AdapterPost;
 import com.jamesmumo.tubonge.adapter.AdapterUsers;
 import com.jamesmumo.tubonge.model.ModelGroups;
 import com.jamesmumo.tubonge.model.ModelPost;
 import com.jamesmumo.tubonge.model.ModelUser;
-import com.jamesmumo.tubonge.R;
-import com.jamesmumo.tubonge.SharedPref;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,9 +44,9 @@ import java.util.Objects;
 public class Search extends AppCompatActivity {
 
     EditText editText;
-    RecyclerView users_rv,posts_rv,groups_rv;
-    TextView users,post,groups;
-    RelativeLayout userly,postly,groupsly;
+    RecyclerView users_rv, posts_rv, groups_rv;
+    TextView users, post, groups;
+    RelativeLayout userly, postly, groupsly;
     ProgressBar pg;
     SharedPref sharedPref;
     ImageView imageView3;
@@ -67,9 +67,9 @@ public class Search extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         sharedPref = new SharedPref(this);
-        if (sharedPref.loadNightModeState()){
+        if (sharedPref.loadNightModeState()) {
             setTheme(R.style.DarkTheme);
-        }else setTheme(R.style.AppTheme);
+        } else setTheme(R.style.AppTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
 
@@ -88,9 +88,9 @@ public class Search extends AppCompatActivity {
         pg.setVisibility(View.VISIBLE);
         Intent intent = getIntent();
 
-        if (intent.hasExtra("hashTag")){
+        if (intent.hasExtra("hashTag")) {
             String tag = getIntent().getStringExtra("hashTag");
-            editText.setText("#"+tag);
+            editText.setText("#" + tag);
         }
 
 
@@ -99,26 +99,26 @@ public class Search extends AppCompatActivity {
         users.setTextColor(Color.parseColor("#0047ab"));
 
         groupsly.setOnClickListener(v -> {
-            users.setTextColor(Color.parseColor("#161F3D"));
-            groups.setTextColor(Color.parseColor("#0047ab"));
-            post.setTextColor(Color.parseColor("#161F3D"));
+//            users.setTextColor(Color.parseColor("#161F3D"));
+//            groups.setTextColor(Color.parseColor("#0047ab"));
+//            post.setTextColor(Color.parseColor("#161F3D"));
             users_rv.setVisibility(View.GONE);
             posts_rv.setVisibility(View.GONE);
             groups_rv.setVisibility(View.VISIBLE);
         });
 
         postly.setOnClickListener(v -> {
-            users.setTextColor(Color.parseColor("#161F3D"));
-            groups.setTextColor(Color.parseColor("#161F3D"));
-            post.setTextColor(Color.parseColor("#0047ab"));
+//            users.setTextColor(Color.parseColor("#161F3D"));
+//            groups.setTextColor(Color.parseColor("#161F3D"));
+//            post.setTextColor(Color.parseColor("#0047ab"));
             users_rv.setVisibility(View.GONE);
             posts_rv.setVisibility(View.VISIBLE);
             groups_rv.setVisibility(View.GONE);
         });
         userly.setOnClickListener(v -> {
-            users.setTextColor(Color.parseColor("#0047ab"));
-            post.setTextColor(Color.parseColor("#161F3D"));
-            groups.setTextColor(Color.parseColor("#161F3D"));
+//            users.setTextColor(Color.parseColor("#0047ab"));
+//            post.setTextColor(Color.parseColor("#161F3D"));
+//            groups.setTextColor(Color.parseColor("#161F3D"));
             users_rv.setVisibility(View.VISIBLE);
             posts_rv.setVisibility(View.GONE);
             groups_rv.setVisibility(View.GONE);
@@ -130,7 +130,7 @@ public class Search extends AppCompatActivity {
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
 
-                if (!recyclerView.canScrollVertically(1) && newState==RecyclerView.SCROLL_STATE_IDLE) {
+                if (!recyclerView.canScrollVertically(1) && newState == RecyclerView.SCROLL_STATE_IDLE) {
                     mCurrenPage++;
                     getAllPost();
                 }
@@ -138,13 +138,12 @@ public class Search extends AppCompatActivity {
         });
 
 
-
         users_rv.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
 
-                if (!recyclerView.canScrollVertically(1) && newState==RecyclerView.SCROLL_STATE_IDLE) {
+                if (!recyclerView.canScrollVertically(1) && newState == RecyclerView.SCROLL_STATE_IDLE) {
                     mCurrenPage++;
                     getAllUsers();
                 }
@@ -152,13 +151,12 @@ public class Search extends AppCompatActivity {
         });
 
 
-
         groups_rv.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
 
-                if (!recyclerView.canScrollVertically(1) && newState==RecyclerView.SCROLL_STATE_IDLE) {
+                if (!recyclerView.canScrollVertically(1) && newState == RecyclerView.SCROLL_STATE_IDLE) {
                     mCurrenPage++;
                     getAllGroups();
                 }
@@ -192,12 +190,12 @@ public class Search extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                if (!TextUtils.isEmpty(s.toString())){
+                if (!TextUtils.isEmpty(s.toString())) {
                     pg.setVisibility(View.VISIBLE);
                     filterUser(s.toString());
                     filterPost(s.toString());
                     filterGroups(s.toString());
-                }else {
+                } else {
                     getAllUsers();
                     getAllPost();
                     getAllGroups();
@@ -217,9 +215,9 @@ public class Search extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 modelGroupsList.clear();
-                for (DataSnapshot ds: dataSnapshot.getChildren()){
+                for (DataSnapshot ds : dataSnapshot.getChildren()) {
                     ModelGroups modelGroups = ds.getValue(ModelGroups.class);
-                    if (Objects.requireNonNull(modelGroups).getgName().toLowerCase().contains(query.toLowerCase()) || modelGroups.getgUsername().contains(query.toLowerCase()) ){
+                    if (Objects.requireNonNull(modelGroups).getgName().toLowerCase().contains(query.toLowerCase()) || modelGroups.getgUsername().contains(query.toLowerCase())) {
                         modelGroupsList.add(modelGroups);
                     }
                     adapterGroups = new AdapterGroups(Search.this, modelGroupsList);
@@ -244,7 +242,7 @@ public class Search extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 modelGroupsList.clear();
-                for (DataSnapshot ds: dataSnapshot.getChildren()){
+                for (DataSnapshot ds : dataSnapshot.getChildren()) {
                     ModelGroups modelGroups = ds.getValue(ModelGroups.class);
                     modelGroupsList.add(modelGroups);
                     adapterGroups = new AdapterGroups(Search.this, modelGroupsList);
@@ -268,9 +266,9 @@ public class Search extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 postList.clear();
-                for (DataSnapshot ds: dataSnapshot.getChildren()){
+                for (DataSnapshot ds : dataSnapshot.getChildren()) {
                     ModelPost modelPost = ds.getValue(ModelPost.class);
-                    if (Objects.requireNonNull(modelPost).getText().toLowerCase().contains(query.toLowerCase()) || modelPost.getType().contains(query.toLowerCase()) || modelPost.getName().contains(query.toLowerCase())){
+                    if (Objects.requireNonNull(modelPost).getText().toLowerCase().contains(query.toLowerCase()) || modelPost.getType().contains(query.toLowerCase()) || modelPost.getName().contains(query.toLowerCase())) {
                         postList.add(modelPost);
                     }
                     adapterPost = new AdapterPost(Search.this, postList);
@@ -297,11 +295,11 @@ public class Search extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 userList.clear();
-                for (DataSnapshot ds: dataSnapshot.getChildren()){
+                for (DataSnapshot ds : dataSnapshot.getChildren()) {
                     ModelUser modelUser = ds.getValue(ModelUser.class);
-                    if (!Objects.requireNonNull(firebaseUser).getUid().equals(Objects.requireNonNull(modelUser).getId())){
+                    if (!Objects.requireNonNull(firebaseUser).getUid().equals(Objects.requireNonNull(modelUser).getId())) {
                         if (modelUser.getName().toLowerCase().contains(query.toLowerCase()) ||
-                                modelUser.getUsername().toLowerCase().contains(query.toLowerCase())){
+                                modelUser.getUsername().toLowerCase().contains(query.toLowerCase())) {
                             userList.add(modelUser);
                             pg.setVisibility(View.GONE);
                         }
@@ -328,7 +326,7 @@ public class Search extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 postList.clear();
-                for (DataSnapshot ds: dataSnapshot.getChildren()){
+                for (DataSnapshot ds : dataSnapshot.getChildren()) {
                     ModelPost modelPost = ds.getValue(ModelPost.class);
                     postList.add(modelPost);
                     adapterPost = new AdapterPost(Search.this, postList);
@@ -352,9 +350,9 @@ public class Search extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 userList.clear();
-                for (DataSnapshot ds: dataSnapshot.getChildren()){
+                for (DataSnapshot ds : dataSnapshot.getChildren()) {
                     ModelUser modelUser = ds.getValue(ModelUser.class);
-                    if (!Objects.requireNonNull(firebaseUser).getUid().equals(Objects.requireNonNull(modelUser).getId())){
+                    if (!Objects.requireNonNull(firebaseUser).getUid().equals(Objects.requireNonNull(modelUser).getId())) {
                         userList.add(modelUser);
                         pg.setVisibility(View.GONE);
                     }

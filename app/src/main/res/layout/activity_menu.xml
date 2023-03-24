@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="?attr/backgroundcolor"
-    tools:context=".menu.Menu"
+    tools:context=".adapter.menu.Menu"
     tools:ignore="Overdraw">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -295,9 +295,43 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/messageDev"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="5dp"
+                    android:background="?attr/layoutcolor"
+                    app:layout_constraintTop_toBottomOf="@+id/email">
+
+                    <ImageView
+                        android:id="@+id/messageDevImg"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_marginStart="16dp"
+                        android:contentDescription="@string/contentdescription"
+                        android:src="@drawable/mad"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:fontFamily="@font/med"
+                        android:text="Complaints and Suggestions"
+                        android:textColor="?attr/textcolor"
+                        android:textSize="20dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/messageDevImg"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="HardcodedText,SpUsage" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/invite"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:visibility="visible"
                     android:layout_marginTop="5dp"
                     android:background="?attr/layoutcolor"
                     app:layout_constraintTop_toBottomOf="@+id/email">
@@ -318,7 +352,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
                         android:fontFamily="@font/med"
-                        android:text="Invite friend"
+                        android:text="App Suggestions"
                         android:textColor="?attr/textcolor"
                         android:textSize="20dp"
                         app:layout_constraintBottom_toBottomOf="parent"

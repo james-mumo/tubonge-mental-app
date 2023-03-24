@@ -1,12 +1,15 @@
 package com.jamesmumo.tubonge.welcome;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.viewpager.widget.ViewPager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
+
 import com.google.android.material.tabs.TabLayout;
 import com.jamesmumo.tubonge.R;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,8 +17,9 @@ public class IntroActivity extends AppCompatActivity {
     private ViewPager screenPager;
     IntroViewPagerAdapter introViewPagerAdapter;
     TabLayout tabIndicator;
-    ImageView next,skip;
+    ImageView next, skip;
     int position = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,22 +31,23 @@ public class IntroActivity extends AppCompatActivity {
 
         //Fill list screen
         final List<ScreenItem> mList = new ArrayList<>();
-        mList.add(new ScreenItem("Post","Post memes & vines & share\n" +
-                " with friends & groups",R.drawable.ic_one));
-        mList.add(new ScreenItem("Search","Search  memes and vines \n" +
-                "across the world and enjoy",R.drawable.ic_two));
-        mList.add(new ScreenItem("Follow","Follow friends and groups\n" +
-                "& get notify of their post",R.drawable.ic_three));
-        mList.add(new ScreenItem("Chat","Chat with friends and groups\n" +
-                "share memes & vines",R.drawable.ic_four));
-        mList.add(new ScreenItem("Create","Create & edit new memes \n" +
-                "& vines with editor    ",R.drawable.ic_five));
-        mList.add(new ScreenItem("Create","Create & edit new memes \n" +
-                "& vines with editor    ",R.drawable.ic_five));
+        mList.add(new ScreenItem("Make Public Posts", "Share supportive posts\n" +
+                "on your feed & groups", R.drawable.ic_one));
+        mList.add(new ScreenItem("Search", "Search users and posts \n" +
+                "across the application", R.drawable.ic_two));
+        mList.add(new ScreenItem("Follow", "Follow friends and professionals \n" +
+                "& get notifications of their stories", R.drawable.ic_three));
+        mList.add(new ScreenItem("Messaging", "Send private messages\n " +
+                " to your peers and groups\n"
+                , R.drawable.ic_four));
+        mList.add(new ScreenItem("Peer Rooms", "Create new rooms \n" +
+                "& Join existing Rooms    ", R.drawable.ic_five));
+        mList.add(new ScreenItem("Save Posts", "Save Posts for Later \n" +
+                "& Reference.", R.drawable.ic_five));
 
         //Setup viewpager
         screenPager = findViewById(R.id.screen_viewpager);
-        introViewPagerAdapter = new IntroViewPagerAdapter(this,mList);
+        introViewPagerAdapter = new IntroViewPagerAdapter(this, mList);
         screenPager.setAdapter(introViewPagerAdapter);
 
         //setup tabLayout with pagerView
@@ -50,7 +55,7 @@ public class IntroActivity extends AppCompatActivity {
 
         //Skip btn click
         skip.setOnClickListener(v -> {
-            Intent intent = new Intent(getApplicationContext(), IntroLast.class );
+            Intent intent = new Intent(getApplicationContext(), IntroLast.class);
             startActivity(intent);
             finish();
         });
@@ -59,12 +64,12 @@ public class IntroActivity extends AppCompatActivity {
         next.setOnClickListener(view -> {
 
             position = screenPager.getCurrentItem();
-            if (position < mList.size()){
+            if (position < mList.size()) {
                 position++;
                 screenPager.setCurrentItem(position);
             }
             //When reached last
-            if (position == mList.size()-1) {
+            if (position == mList.size() - 1) {
 
                 loadLastScreen();
 
@@ -76,7 +81,7 @@ public class IntroActivity extends AppCompatActivity {
         tabIndicator.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                if (tab.getPosition() == mList.size()-1){
+                if (tab.getPosition() == mList.size() - 1) {
                     loadLastScreen();
                 }
             }
@@ -95,7 +100,7 @@ public class IntroActivity extends AppCompatActivity {
     }
 
     private void loadLastScreen() {
-        Intent intent = new Intent(getApplicationContext(), IntroLast.class );
+        Intent intent = new Intent(getApplicationContext(), IntroLast.class);
         startActivity(intent);
         finish();
     }

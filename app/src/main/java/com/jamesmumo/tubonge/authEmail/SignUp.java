@@ -20,7 +20,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-import com.jamesmumo.tubonge.menu.Policy;
+import com.jamesmumo.tubonge.adapter.menu.Policy;
 import com.jamesmumo.tubonge.R;
 import com.tapadoo.alerter.Alerter;
 import java.util.HashMap;
@@ -44,6 +44,7 @@ public class SignUp extends AppCompatActivity {
         textView2.setOnClickListener(v -> {
             Intent intent = new Intent(SignUp.this, Policy.class);
             startActivity(intent);
+
         });
         register.setOnClickListener(view -> {
             Intent intent = new Intent(SignUp.this, SignIn.class);
@@ -148,6 +149,7 @@ public class SignUp extends AppCompatActivity {
                 hashMap.put("name", name);
                 hashMap.put("email", email);
                 hashMap.put("username", "");
+                hashMap.put("isProfessional", 0);
                 hashMap.put("bio", "");
                 hashMap.put("verified","");
                 hashMap.put("location","");

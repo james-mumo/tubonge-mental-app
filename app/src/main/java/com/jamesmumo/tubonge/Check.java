@@ -7,6 +7,7 @@ import android.os.Bundle;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.jamesmumo.tubonge.welcome.IntroActivity;
 import com.jamesmumo.tubonge.welcome.IntroLast;
 
 public class Check extends AppCompatActivity {
@@ -28,6 +29,7 @@ public class Check extends AppCompatActivity {
             startActivity(intent);
         }else {
             Intent intent = new Intent(Check.this, MainActivity.class);
+//            Intent intent = new Intent(Check.this, IntroActivity.class);
             startActivity(intent);
         }
         finish();

@@ -3,6 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.jamesmumo.tubonge">
 
+    <uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
+        tools:ignore="ManifestOrder" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name="com.jamesmumo.tubonge.MyApplication"
         android:allowBackup="true"
@@ -14,8 +20,111 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        
+        <activity
+            android:name=".adapter.menu.MessageDevActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".userEvents.DevelopmentItem"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".authEmail.FinishAsProfessional"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".authEmail.SignUpAsProfessional"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".userEvents.ViewSingleProfessional"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".userEvents.WhatMakingYouFeel"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".userEvents.MoodControl"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".userEvents.MentalDisorders"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".userEvents.ViewProfessional"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".userEvents.SuicidePrevention"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".userEvents.AddictionRecovery"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".userEvents.SelfDevelopment"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".userEvents.ThoughtsDiary"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".userEvents.PeerCounselling"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".userEvents.ViewEvents"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
         <activity android:name="com.jamesmumo.tubonge.groupSettings.GUsernameActivity" />
         <activity android:name="com.jamesmumo.tubonge.groupSettings.GnameActivity" />
         <activity android:name="com.jamesmumo.tubonge.groupSettings.gLinkActivity" />
@@ -28,15 +137,15 @@
         <activity android:name="com.jamesmumo.tubonge.settings.BioActivity" />
         <activity android:name="com.jamesmumo.tubonge.Check" />
         <activity
-            android:name="com.jamesmumo.tubonge.menu.ChangeEmail"
+            android:name=".adapter.menu.ChangeEmail"
             android:configChanges="orientation"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.jamesmumo.tubonge.menu.ChangePassword"
+            android:name=".adapter.menu.ChangePassword"
             android:configChanges="orientation"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.jamesmumo.tubonge.menu.Policy"
+            android:name=".adapter.menu.Policy"
             android:configChanges="orientation"
             android:screenOrientation="portrait" />
         <activity
@@ -57,7 +166,7 @@
             android:configChanges="orientation"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.jamesmumo.tubonge.menu.Saved"
+            android:name=".adapter.menu.Saved"
             android:configChanges="orientation"
             android:screenOrientation="portrait" />
         <activity
@@ -89,9 +198,9 @@
             android:configChanges="orientation"
             android:screenOrientation="portrait" />
         <activity
-            android:exported="true"
             android:name="com.jamesmumo.tubonge.shareChat.ShareChatActivity"
             android:configChanges="orientation"
+            android:exported="true"
             android:label="Add to chat"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -149,7 +258,7 @@
             android:configChanges="orientation"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.jamesmumo.tubonge.menu.Menu"
+            android:name=".adapter.menu.Menu"
             android:configChanges="orientation"
             android:screenOrientation="portrait" />
         <activity
@@ -176,22 +285,22 @@
             android:screenOrientation="portrait"
             android:theme="@style/AuthTheme" />
         <activity
-            android:name="com.jamesmumo.tubonge.authEmail.ForgotPassword"
+            android:name=".authEmail.ForgotPassword"
             android:configChanges="orientation"
             android:screenOrientation="portrait"
             android:theme="@style/AuthTheme" />
         <activity
-            android:name="com.jamesmumo.tubonge.authEmail.Finish"
+            android:name=".authEmail.Finish"
             android:configChanges="orientation"
             android:screenOrientation="portrait"
             android:theme="@style/AuthTheme" />
         <activity
-            android:name="com.jamesmumo.tubonge.authEmail.SignUp"
+            android:name=".authEmail.SignUp"
             android:configChanges="orientation"
             android:screenOrientation="portrait"
             android:theme="@style/AuthTheme" />
         <activity
-            android:name="com.jamesmumo.tubonge.authEmail.SignIn"
+            android:name=".authEmail.SignIn"
             android:configChanges="orientation"
             android:screenOrientation="portrait"
             android:theme="@style/AuthTheme" />
@@ -206,9 +315,9 @@
             android:screenOrientation="portrait"
             android:theme="@style/AuthTheme" />
         <activity
-            android:exported="true"
             android:name="com.jamesmumo.tubonge.welcome.SplashScreen"
             android:configChanges="orientation"
+            android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/AuthTheme">
             <intent-filter>
@@ -246,10 +355,5 @@
             </intent-filter>
         </service>
     </application>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
-        tools:ignore="ManifestOrder" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
-    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

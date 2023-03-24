@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorAccent"
+    tools:context=".userEvents.DevelopmentItem">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:id="@+id/topRelLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/headercolor">
+
+            <TextView
+                android:id="@+id/pagetitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="20dp"
+                android:fontFamily="@font/bungee"
+                android:rotation="-3"
+                android:text="@string/struggling_with_addiction"
+                android:textColor="?attr/headertextcolor"
+                android:textSize="19dp"
+                android:translationZ="333dp" />
+
+            <ImageView
+                android:layout_width="39dp"
+                android:layout_height="29dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/abs1" />
+
+            <ImageView
+                android:layout_width="39dp"
+                android:layout_height="29dp"
+                android:layout_alignParentEnd="false"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/graphegg" />
+
+            <ImageView
+                android:layout_width="39dp"
+                android:layout_height="29dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="30dp"
+
+                android:src="@drawable/chat" />
+
+
+            <!--            <ImageView-->
+            <!--                android:id="@+id/image_view"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="200dp"-->
+            <!--                android:scaleType="centerInside"-->
+            <!--                android:src="@drawable/avatar" />-->
+
+        </RelativeLayout>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/oneCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/topRelLayout"
+            android:layout_marginTop="10dp"
+            app:cardBackgroundColor="?attr/headercolor"
+            app:cardCornerRadius="5dp"
+            app:cardElevation="4dp"
+            app:cardMaxElevation="4dp"
+            app:cardUseCompatPadding="true">
+
+            <TextView
+                android:id="@+id/point1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/headercolor"
+                android:fontFamily="@font/bungee"
+                android:paddingHorizontal="10dp"
+                android:text="@string/sample_long"
+                android:textColor="?attr/headertextcolor"
+                android:textSize="14sp" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/twoCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/oneCard"
+            android:layout_marginTop="10dp"
+            app:cardBackgroundColor="?attr/headercolor"
+            app:cardCornerRadius="5dp"
+            app:cardElevation="4dp"
+            app:cardMaxElevation="4dp"
+            app:cardUseCompatPadding="true">
+
+            <TextView
+                android:id="@+id/point2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/headercolor"
+                android:fontFamily="@font/bungee"
+                android:paddingHorizontal="10dp"
+                android:text="@string/sample_long"
+                android:textColor="?attr/headertextcolor"
+                android:textSize="14sp" />
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/twoCard"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:background="?attr/headercolor"
+            android:fontFamily="@font/bungee"
+            android:paddingHorizontal="20dp"
+            android:text="See More"
+            android:textColor="?attr/headertextcolor"
+            android:textSize="14sp" />
+
+
+    </RelativeLayout>
+</androidx.core.widget.NestedScrollView>
