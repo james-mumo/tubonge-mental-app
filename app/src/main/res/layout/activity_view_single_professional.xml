@@ -131,7 +131,7 @@
             android:id="@+id/docAbsImage"
             android:layout_width="45dp"
             android:layout_height="45dp"
-            android:src="@drawable/abstractimage" />
+            android:src="@drawable/abstractt" />
 
         <TextView
             android:id="@+id/profPeers"

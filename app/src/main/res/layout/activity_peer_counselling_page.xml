@@ -209,7 +209,7 @@
                             android:layout_height="55dp"
                             android:layout_marginEnd="10dp"
                             android:scaleType="fitXY"
-                            android:src="@drawable/gibbet1" />
+                            android:src="@drawable/mapp" />
 
                         <RelativeLayout
                             android:layout_width="match_parent"
@@ -310,7 +310,7 @@
                             android:layout_height="55dp"
                             android:layout_marginEnd="10dp"
                             android:scaleType="fitXY"
-                            android:src="@drawable/abstractimage" />
+                            android:src="@drawable/mapp" />
 
                         <RelativeLayout
                             android:layout_width="match_parent"

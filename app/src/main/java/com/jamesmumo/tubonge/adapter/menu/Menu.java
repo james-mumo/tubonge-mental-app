@@ -82,7 +82,7 @@ public class Menu extends AppCompatActivity {
 //            intent.putExtra(Intent.EXTRA_TEXT,shareBody);
 //            startActivity(Intent.createChooser(intent, "Share Via"));
 
-            startActivity(new Intent(Menu.this, MessageDevActivity.class));
+//            startActivity(new Intent(Menu.this, MessageDevActivity.class));
 
 
         });
