@@ -1,6 +1,5 @@
 # Android Mental Health Application
 
-![App Logo](Screenshot_20230522-133915.png) (Screenshot_20230522-133915.png)
 
 ## Overview
 This Android application is developed as a final year project to address mental health concerns. The application provides a comprehensive set of features to support users in managing their mental well-being.
@@ -33,6 +32,9 @@ To get started with the Android Mental Health Application, follow these steps:
 3. Connect the app to your Firebase project by following the Firebase integration guide.
 4. Build and run the application on an Android device or emulator.
 5. Explore the various features and functionalities of the app.
+
+
+![App Logo](Screenshot_20230522-133603.png) ![App Logo](Screenshot_20230522-133915.png) ![App Logo](Screenshot_20230522-133831.png)
 
 ## Contributions
 Contributions to the Android Mental Health Application are welcome! If you have any suggestions, bug reports, or feature requests, please open an issue or submit a pull request.
