@@ -34,7 +34,7 @@ To get started with the Android Mental Health Application, follow these steps:
 5. Explore the various features and functionalities of the app.
 
 
-![App Logo](Screenshot_20230522-133603.png) ![App Logo](Screenshot_20230522-133915.png) ![App Logo](Screenshot_20230522-133831.png)
+![App Logo](Screenshot_20230522-133603.png) ![App Logo](Screenshot_20230522-133915.png) ![App Logo](Screenshot_20230522-133831.png)  ![App Logo](Screenshot_20230522-133950.png)
 
 ## Contributions
 Contributions to the Android Mental Health Application are welcome! If you have any suggestions, bug reports, or feature requests, please open an issue or submit a pull request.
