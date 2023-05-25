@@ -1,6 +1,6 @@
 # Android Mental Health Application
 
-![App Logo](app_logo.png)
+![App Logo](Screenshot_20230522-133915.png) (Screenshot_20230522-133915.png)
 
 ## Overview
 This Android application is developed as a final year project to address mental health concerns. The application provides a comprehensive set of features to support users in managing their mental well-being.
