@@ -5,7 +5,8 @@
 ## Overview
 This Android application is developed as a final year project to address mental health concerns. The application provides a comprehensive set of features to support users in managing their mental well-being.
 
-# >> There's a "PleaseREADME.txt" file in the main folder on how to build
+>> There's a "PleaseREADME.txt" file 
+>> in the main folder on how to build
 
 - The gradle Version used in ""gradle-6.7.1""
 - The jdk version is in the ReadMe.txt
